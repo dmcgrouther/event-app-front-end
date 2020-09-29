@@ -1,4 +1,5 @@
 import React from 'react';
+import './EventListPageHeader.css'
 
 const EventListPageHeader = () => {
     return (

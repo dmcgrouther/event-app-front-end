@@ -1,9 +1,12 @@
 import React from 'react';
+import EventListPageTableHeader from './EventListTableHeader';
 
 const EventListPageEventTable = () => {
     return (
         <div>
-            <h2>Stuff!</h2>
+            <EventListPageTableHeader />
         </div>
     )
 }
+
+export default EventListPageEventTable;
