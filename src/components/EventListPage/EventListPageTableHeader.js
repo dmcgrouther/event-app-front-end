@@ -1,9 +1,9 @@
 import React from 'react';
-import './EventListPageTableHeader.css'
+import './EventListPageTableHeader.css';
 
 const EventListPageTableHeader = () => {
     return (
-        <div>
+        <div class="EventListPageTableHeader__column-section">
             <h3 class='EventListPageTableHeader__column'>Event Name</h3>
             <h3 class='EventListPageTableHeader__column'>Game System</h3>
             <h3 class='EventListPageTableHeader__column'>Meetup Type</h3>
