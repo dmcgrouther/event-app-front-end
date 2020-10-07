@@ -1,0 +1,27 @@
+#event-list-header{
+    text-align: center;
+}
+
+#table-header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#events-table {
+    text-align: center;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 100%;
+}
+
+#events-table td, #events-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#event-list-bottom-text{
+    text-align: center;
+}

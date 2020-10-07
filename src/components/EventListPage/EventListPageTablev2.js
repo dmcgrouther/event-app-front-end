@@ -1,5 +1,6 @@
 import React from 'react';
 //used this heavily https://dev.to/abdulbasit313/an-easy-way-to-create-a-customize-dynamic-table-in-react-js-3igg
+import './EventListPageTablev2.css'
 
 let events = [
     {
@@ -40,7 +41,7 @@ class EventListPageTablev2 extends React.Component {
     renderTableHeader() {
         let header = Object.keys(this.state.events[0])
         return header.map((key, index) => {
-            return <th key={index}>{key.toUpperCase()}</th>
+            return <th id="table-header" key={index}>{key}</th>
         })
     }
 
@@ -48,7 +49,7 @@ class EventListPageTablev2 extends React.Component {
         return this.state.events.map((event, index) => {
             const { eventName, gameSystem, meetupType, eventDate, numberOfPlayers} = event
             return (
-                <tr>
+                <tr className="event">
                     <td>{eventName}</td>
                     <td>{gameSystem}</td>
                     <td>{meetupType}</td>
@@ -62,13 +63,14 @@ class EventListPageTablev2 extends React.Component {
     render() {
         return (
             <div>
-                <h1>React dynamic table!!!!!</h1>
-                <table>
+                <h1 id="event-list-header">v2 table below</h1>
+                <table id="events-table">
                     <tbody>
                         <tr>{this.renderTableHeader()}</tr>
                         {this.renderTableData()}
                     </tbody>
                 </table>
+                <p id="event-list-bottom-text">create an event here!</p>
             </div>
         )
     }
