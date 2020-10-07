@@ -1,6 +1,6 @@
 import React from 'react';
 //used this heavily https://dev.to/abdulbasit313/an-easy-way-to-create-a-customize-dynamic-table-in-react-js-3igg
-import './EventListPageTablev2.css'
+import './EventListPageTable.css'
 import Event from './Event'
 
 let events = [
@@ -11,14 +11,16 @@ let events = [
         meetupType: 'Online',
         eventDate: '10-1-2020 7pm PST',
         numberOfPlayers: '2 of 5',
+        experienceLevel: 'Experienced only'
     },
     {
-        eventName: 'Grimark Adeventures!!',
+        eventName: 'Grimdark Adeventures!!',
         gameSystem: 'Dark Heresy',
         // gameEdition: '1st Edition',
         meetupType: 'Online',
         eventDate: '10-1-2020 7:30pm PST',
         numberOfPlayers: '5 of 5',
+        experienceLevel: 'Conscripts welcome'
     },
     {
         eventName: 'Super heroes!',
@@ -27,11 +29,12 @@ let events = [
         meetupType: 'Online',
         eventDate: '10-2-2020 10:00pm PST',
         numberOfPlayers: '3 of 5',
+        experienceLevel: 'All! newcomers welcome'
     }
 ];
 
 
-class EventListPageTablev2 extends React.Component {
+class EventListPageTable extends React.Component {
 
     constructor(props){
         super(props)
@@ -40,15 +43,16 @@ class EventListPageTablev2 extends React.Component {
             }
         }
     renderTableHeader() {
-        let header = Object.keys(this.state.events[0])
-        return header.map((key, index) => {
+        // let header = Object.keys(this.state.events[0])
+        let headerColumns = ['Event Name', 'Game System', 'Meetup Type', 'Event Date', 'Number of Attendees', 'Experience Level']
+        return headerColumns.map((key, index) => {
             return <th key={index}>{key}</th>
         })
     }
 
     renderTableData() {
         return this.state.events.map((event, index) => {
-            const { eventName, gameSystem, meetupType, eventDate, numberOfPlayers} = event
+            const { eventName, gameSystem, meetupType, eventDate, numberOfPlayers, experienceLevel} = event
             return (
                 <tr className="event">
                     <td>{eventName}</td>
@@ -56,6 +60,7 @@ class EventListPageTablev2 extends React.Component {
                     <td>{meetupType}</td>
                     <td>{eventDate}</td>
                     <td>{numberOfPlayers}</td>
+                    <td>{experienceLevel}</td>
                 </tr>
             )
         })
@@ -73,10 +78,10 @@ class EventListPageTablev2 extends React.Component {
                         {this.renderTableData()}
                     </tbody>
                 </table>
-                <p id="event-list-bottom-text">Don't see what you want to play? Click here to create your own event!</p>
+                <p id="event-list-bottom-text">Don't see what you like? Click here to create your own event!</p>
             </div>
         )
     }
 }
 
-export default EventListPageTablev2;
+export default EventListPageTable;

@@ -1,10 +1,10 @@
 import React from 'react';
-import EventListPageTablev2 from './EventListPageTablev2';
+import EventListPageTable from './EventListPageTable';
 
 const EventListPage = () => {
     return (
         <>
-            <EventListPageTablev2 />
+            <EventListPageTable />
         </>
     )
 }
