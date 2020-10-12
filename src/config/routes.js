@@ -5,6 +5,7 @@ import About from '../components/About';
 import EventListPage from '../components/EventListPage/EventListPage';
 import Register from '../components/Register';
 import Login from '../components/Login';
+import CreateEvent from '../components/CreateEvent';
 
 export default (
     <Switch>
@@ -13,5 +14,6 @@ export default (
         <Route path='/eventlist' component={ EventListPage }/>
         <Route path='/register' component={ Register } />
         <Route path='/Login' component={ Login } />
+        <Route path='/CreateEvent' component={ CreateEvent } />
     </Switch>
 );

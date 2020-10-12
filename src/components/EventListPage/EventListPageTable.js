@@ -2,6 +2,8 @@ import React from 'react';
 //used this heavily https://dev.to/abdulbasit313/an-easy-way-to-create-a-customize-dynamic-table-in-react-js-3igg
 import './EventListPageTable.css'
 import Event from './Event'
+import { Link } from 'react-router-dom';
+
 
 let events = [
     {
@@ -70,18 +72,23 @@ class EventListPageTable extends React.Component {
         return (
             <div>
                 <h1 id="event-list-header">Upcoming Game Sessions</h1>
-                <p>*Account needed to create or signup for events*</p>
-                <p>Click on an event to learn more!</p>
+                <p className="event-list-top-text">*Account needed to create or signup for events*</p>
+                <p className="event-list-top-text">Click on an event to learn more!</p>
                 <table id="events-table">
                     <tbody>
                         <tr id="table-header">{this.renderTableHeader()}</tr>
                         {this.renderTableData()}
                     </tbody>
                 </table>
-                <p id="event-list-bottom-text">Don't see what you like? Click here to create your own event!</p>
+                <p id="event-list-bottom-text">Don't see what you like? Click <Link to={'/CreateEvent'}>here</Link> to create your own event!</p>
             </div>
         )
     }
 }
+
+{/* <p>
+If not, sign up <Link to={'/Register'}>here</Link>!
+</p> */}
+{/* <p id="event-list-bottom-text">Don't see what you like? Click <Link to={'/CreateEvent'}>here</Link> to create your own event!</p> */}
 
 export default EventListPageTable;
