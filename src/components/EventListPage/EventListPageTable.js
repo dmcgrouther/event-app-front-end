@@ -71,14 +71,14 @@ class EventListPageTable extends React.Component {
 
     renderTableData() {
         return this.state.events.map((event, index) => {
-            const { eventName, gameSystem, howTheEventHappens, eventDate, numberOfPlayers, experienceLevel} = event
+            const { eventName, gameSystem, howTheEventHappens, eventDate, maximumNonHostPlayerCount, currentNonHostPlayerCount , experienceLevel} = event
             return (
                 <tr className="event">
                     <td>{eventName}</td>
                     <td>{gameSystem}</td>
                     <td>{howTheEventHappens}</td>
                     <td>{eventDate}</td>
-                    <td>{numberOfPlayers}</td>
+                    <td>{currentNonHostPlayerCount} of {maximumNonHostPlayerCount}</td>
                     <td>{experienceLevel}</td>
                 </tr>
             )
