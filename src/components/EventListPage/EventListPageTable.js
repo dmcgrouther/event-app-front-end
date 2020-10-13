@@ -1,7 +1,7 @@
 import React from 'react';
 //used this heavily https://dev.to/abdulbasit313/an-easy-way-to-create-a-customize-dynamic-table-in-react-js-3igg
 import './EventListPageTable.css'
-import Event from './Event'
+// import Event from './Event'
 import { Link } from 'react-router-dom';
 
 
