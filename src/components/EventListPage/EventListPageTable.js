@@ -3,6 +3,7 @@ import React from 'react';
 import './EventListPageTable.css'
 // import Event from './Event'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 let events = [
@@ -38,12 +39,28 @@ let events = [
 
 class EventListPageTable extends React.Component {
 
-    constructor(props){
-        super(props)
-            this.state = {
-                events: events
-            }
-        }
+    // constructor(props){
+    //     super(props)
+    //         this.state = {
+    //             events: events
+    //         }
+    //     }
+    state = {
+        events: events
+    }
+
+    componentDidMount () {
+        axios.get(`${process.env.REACT_APP_API_URL}/events`)
+        .then((res) => {
+          this.setState({
+              events: res.data.data
+          })
+          console.log('here')
+          console.log(res.data.data)
+        })
+        .catch((err) => console.log(err));
+    }
+        
     renderTableHeader() {
         // let header = Object.keys(this.state.events[0])
         let headerColumns = ['Event Name', 'Game System', 'Meetup Type', 'Event Date', 'Number of Attendees', 'Experience Level']
@@ -54,12 +71,12 @@ class EventListPageTable extends React.Component {
 
     renderTableData() {
         return this.state.events.map((event, index) => {
-            const { eventName, gameSystem, meetupType, eventDate, numberOfPlayers, experienceLevel} = event
+            const { eventName, gameSystem, howTheEventHappens, eventDate, numberOfPlayers, experienceLevel} = event
             return (
                 <tr className="event">
                     <td>{eventName}</td>
                     <td>{gameSystem}</td>
-                    <td>{meetupType}</td>
+                    <td>{howTheEventHappens}</td>
                     <td>{eventDate}</td>
                     <td>{numberOfPlayers}</td>
                     <td>{experienceLevel}</td>

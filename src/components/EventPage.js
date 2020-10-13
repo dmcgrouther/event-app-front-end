@@ -16,6 +16,7 @@ class EventPage extends Component {
         meetupGatheringInfo: '',
         typeOfEventActivity: '',
         eventDescription: '',
+        experienceLevel: '',
     };
 
     componentDidMount () {
@@ -31,6 +32,7 @@ class EventPage extends Component {
                 meetupGatheringInfo: res.data.data.meetupGatheringInfo,
                 typeOfEventActivity: res.data.data.typeOfEventActivity,
                 eventDescription: res.data.data.eventDescription,
+                experienceLevel: res.data.data.experienceLevel,
             })
             console.log(res)
           })

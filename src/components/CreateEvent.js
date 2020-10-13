@@ -13,6 +13,7 @@ class CreateEvent extends Component {
         meetupGatheringInfo: '',
         typeOfEventActivity: '',
         eventDescription: '',
+        experienceLevel: '',
     };
 
     handleChange = (event) => {
@@ -73,6 +74,10 @@ class CreateEvent extends Component {
                   <div className="form-group">
                     <label htmlFor="name">Event Description</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="eventDescription" name="eventDescription" value={this.state.eventDescription} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="name">Experience Level</label>
+                    <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
                   </div>
                   <button className="btn btn-primary float-right" type="submit">Create Event</button>
                 </form>
