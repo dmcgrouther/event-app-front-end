@@ -1,28 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 //used this heavily https://dev.to/abdulbasit313/an-easy-way-to-create-a-customize-dynamic-table-in-react-js-3igg
 import './EventListPageTable.css'
-// import Event from './Event'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+class EventListPageTable extends Component {
 
-
-
-class EventListPageTable extends React.Component {
-
-    // constructor(props){
-    //     super(props)
-    //         this.state = {
-    //             events: events
-    //         }
-    //     }
     state = {
         events: []
     }
 
-    handleClick(id){
-        // console.log(`clicked!`)
-        console.log(id)
+    handleClick(e) {
+        console.log(e)
+        window.location.href = `events/${e}` //this takes the page you are on to the event
+        // window.open(`http://localhost:3000/events/${e}`, '_blank') //this creates a new tab and links there
     }
 
     componentDidMount () {
@@ -49,11 +40,11 @@ class EventListPageTable extends React.Component {
         return this.state.events.map((event, index) => {
             const { eventName, gameSystem, howTheEventHappens, eventDate, maximumNonHostPlayerCount, currentNonHostPlayerCount , experienceLevel} = event
             return (
-                // <tr className="event">
-                // <tr className="event" key={event._id}>
-                <tr className="event" key={event._id}>
-                {/* <tr className="event" key={event._id}></tr> */}
+                
+                <tr className="event" key={event._id} onClick={ () => this.handleClick(event._id) }>
                     {/* <td><span onClick={this.handleClick(event._id)}>{eventName}</span></td> */}
+                    {/* <td><span onClick={ () => this.handleClick(event._id) }>{eventName}</span></td> */}
+                    {/* <td><Link to={`/events/${event._id}`}>{eventName}</Link></td> */}
                     <td>{eventName}</td>
                     <td>{gameSystem}</td>
                     <td>{howTheEventHappens}</td>
@@ -74,18 +65,13 @@ class EventListPageTable extends React.Component {
                 <table id="events-table">
                     <tbody>
                         <tr id="table-header">{this.renderTableHeader()}</tr>
-                        {this.renderTableData()}
+                        { this.renderTableData() }
                     </tbody>
                 </table>
-                <p id="event-list-bottom-text">Don't see what you like? Click <Link to={'/CreateEvent'}>here</Link> to create your own event!</p>
+                <p id="event-list-bottom-text">Don't see what you like? Click <Link to='/CreateEvent'>here</Link> to create your own event!</p>
             </div>
         )
     }
 }
-
-{/* <p>
-If not, sign up <Link to={'/Register'}>here</Link>!
-</p> */}
-{/* <p id="event-list-bottom-text">Don't see what you like? Click <Link to={'/CreateEvent'}>here</Link> to create your own event!</p> */}
 
 export default EventListPageTable;
