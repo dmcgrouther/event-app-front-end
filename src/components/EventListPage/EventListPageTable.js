@@ -49,7 +49,7 @@ class EventListPageTable extends Component {
                     <td>{gameSystem}</td>
                     <td>{howTheEventHappens}</td>
                     <td>{eventDate}</td>
-                    <td>{currentNonHostPlayerCount} of {maximumNonHostPlayerCount}</td>
+                    <td>{currentNonHostPlayerCount || 0 } of {maximumNonHostPlayerCount}</td>
                     <td>{experienceLevel}</td>
                 </tr>
             )
