@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DateAndTimePick from './DateAndTimePick';
 
-class CreateEvent extends Component {
+class Test extends Component {
 
     state = {
         eventName: '',
@@ -32,17 +32,6 @@ class CreateEvent extends Component {
           })
           .catch((err) => console.log(err));
       }
-    
-    handleDatePickerSubmit = (e) => {
-      e.preventDefault();
-      console.log(this.state.eventDate)
-    }
-
-    handleDatePickerChange = (date) => {
-      this.setState({
-          eventDate: date
-      })
-    }
 
       render() {
         return (
@@ -50,11 +39,6 @@ class CreateEvent extends Component {
             <div className="row">
               <div className="col-md-4 offset-md-4">
                 <h4 className="mb-3">Create Event</h4>
-                <DateAndTimePick 
-                  handleDatePickerSubmit={this.handleDatePickerSubmit}
-                  handleDatePickerChange={this.handleDatePickerChange}
-                  eventDate={this.state.eventDate}
-                />
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="name">Event Name</label>
@@ -68,10 +52,13 @@ class CreateEvent extends Component {
                     <label htmlFor="name">Game Edition</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="gameEdition" name="gameEdition" value={this.state.gameEdition} />
                   </div>
-                  {/* <div className="form-group">
+                  <DateAndTimePick 
+                    eventDate={this.state.eventDate}
+                  />
+                  <div className="form-group">
                     <label htmlFor="name">Event Date</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="eventDate" name="eventDate" value={this.state.eventDate} />
-                  </div> */}
+                  </div>
                   <div className="form-group">
                     <label htmlFor="name">Maximum Non-Host Player Count </label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" value={this.state.maximumNonHostPlayerCount} />
@@ -105,4 +92,4 @@ class CreateEvent extends Component {
       }
 }
 
-export default CreateEvent;
+export default Test;
