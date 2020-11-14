@@ -3,8 +3,8 @@
 // uncomment handlesubmit when backendworks
 
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -20,21 +20,17 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
-    // axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, this.state, {
-    //   withCredentials: true,
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    //     this.props.setCurrentUser(res.data.data);
-    //     this.props.history.push('/profile');
-    //   })
-    //   .catch((err) => console.log(err));
+    axios.post(`${process.env.REACT_APP_API_URL}/login`, this.state)
+      .then((res) => {
+        this.props.setCurrentUser(res.data.data);
+        this.props.history.push('/profile');
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
     // console.log('Hello From Render', this.state.address && this.state.address.street);
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="container mt-4">
           <div className="row">

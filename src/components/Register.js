@@ -3,7 +3,7 @@
 //make sure to uncomment out the part in handlesubmit to sync with backend. 
 
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 class Register extends Component {
   state = {
@@ -14,7 +14,6 @@ class Register extends Component {
   };
 
   handleChange = (event) => {
-    // console.log(event);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -22,12 +21,9 @@ class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
-    // axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => console.log(err));
+    axios.post(`${process.env.REACT_APP_API_URL}/register`, this.state)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error))
   }
 
   render() {
