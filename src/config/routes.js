@@ -7,6 +7,7 @@ import Register from '../components/Register';
 import Login from '../components/Login';
 import CreateEvent from '../components/CreateEvent';
 import EventPage from '../components/EventPage';
+import ViewUserPage from '../components/ViewUserPage';
 
 export default ({ currentUser, setCurrentUser }) => (
     <Switch>
@@ -17,5 +18,6 @@ export default ({ currentUser, setCurrentUser }) => (
         <Route path='/login' render={() => <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/CreateEvent' component={ CreateEvent } />
         <Route path='/events/:eventId' component={EventPage}/>
+        <Route path='/users/:userId' component={ViewUserPage}/>
     </Switch>
 );
