@@ -23,8 +23,8 @@ class Login extends Component {
     axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, this.state)
       .then((res) => {
         console.log(res)
-        // this.props.setCurrentUser(res.data.data);
-        // this.props.history.push('/profile');
+        this.props.setCurrentUser(res.data.data);
+        this.props.history.push('/eventlist');
       })
       .catch((err) => console.log(err));
   }
