@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class ViewUserPage extends Component {
     state = {
-        userName: '',
+        name: '',
         contactInfo: '',
         profilePicture: '',
     }
@@ -12,7 +12,7 @@ class ViewUserPage extends Component {
         axios.get(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
           .then((res) => {
             this.setState({
-                userName: res.data.data.userName,
+                name: res.data.data.name,
                 contactInfo: res.data.data.contactInfo,
             })
             console.log(res)
@@ -23,7 +23,7 @@ class ViewUserPage extends Component {
     render () {
         return (
             <>
-                <h1>{this.state.userName}</h1>
+                <h1>{this.state.name}</h1>
 
                 <h1>{this.state.contactInfo}</h1>
 
