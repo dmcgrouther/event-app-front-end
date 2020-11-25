@@ -18,6 +18,7 @@ export default ({ currentUser, setCurrentUser }) => (
         <Route path='/login' render={() => <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/CreateEvent' component={ CreateEvent } />
         <Route path='/events/:eventId' component={EventPage}/>
-        <Route path='/users/:userId' component={ViewUserPage}/>
+        {/* <Route path='/users/:userId' component={ViewUserPage}/> */}
+        <Route path='/users/:userId' render={() => <ViewUserPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
     </Switch>
 );
