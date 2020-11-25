@@ -52,16 +52,6 @@ class ViewUserPage extends Component {
 
     render () {
         if(this.props.currentUser === window.location.pathname.split('/')[2]){
-            // return (
-            //     <>
-            //         <h1>Your username is: {this.state.name}</h1>
-            //         <h3>If you would like to edit your username, do so below:</h3>
-            //         <input type="text" value={this.state.name} onChange={this.handleNameChange} />
-            //         <button onClick={this.handleNameClick}>Submit Changes</button>
-            //         <h1>User Contact Info: {this.state.contactInfo}</h1>
-            //         <h1>{this.state.profilePicture}</h1>
-            //     </>
-            // )
             return (
                 <>
                     <h1>Your username is: {this.state.name}</h1>
