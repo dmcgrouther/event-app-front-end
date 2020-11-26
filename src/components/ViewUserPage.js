@@ -58,7 +58,7 @@ class ViewUserPage extends Component {
         .then(res => {
             console.log(res);
             this.props.setCurrentUser(null);
-            this.props.history.push('/eventlist');
+            window.location = '/';
         }).catch(err => console.log(err));
     }
 
