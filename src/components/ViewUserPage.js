@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//https://gist.github.com/primaryobjects/aacf6fa49823afb2f6ff065790a5b402
 
 class ViewUserPage extends Component {
     constructor(props){
@@ -50,6 +51,17 @@ class ViewUserPage extends Component {
         });
     }
 
+    deleteYourAccount(event){
+        // event.preventDefault();
+        console.log('delete delete!')
+        axios.delete(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
+        .then(res => {
+            console.log(res);
+            this.props.setCurrentUser(null);
+            this.props.history.push('/eventlist');
+        }).catch(err => console.log(err));
+    }
+
     render () {
         if(this.props.currentUser === window.location.pathname.split('/')[2]){
             return (
@@ -62,12 +74,25 @@ class ViewUserPage extends Component {
                         User Name:
                         <input type="text" value={this.state.name} onChange={this.handleNameChange} />
                     </label>
+                    <br />
                     <label>
                         Contact Info:
                         <input type="text" value={this.state.contactInfo} onChange={this.handleContactInfoChange} />
                     </label>
+                    <br />
                     <input type="submit" value="Save Changes" />
                     </form>
+                    <br />
+                    <br />
+                    <h4>If you would like to delete your account, you can do so by clicking the button below.</h4>
+                    {/* <button onClick={this.deleteYourAccount}>Delete My Account</button> */}
+
+                    <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
+                        Delete My Account
+                    </button>
+                    
+                    {/* <h4>Are you sure you want to delete your accout? Click below to do so.</h4>
+                    <button onClick={this.confirmAccountDeletion}>Yes, I want to delete my account.</button> */}
                 </>
               );
         } else {
