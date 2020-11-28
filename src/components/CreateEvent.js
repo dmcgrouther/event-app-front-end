@@ -17,7 +17,7 @@ class CreateEvent extends Component {
         eventDescription: '',
         experienceLevel: '',
         eventLengthInHours: '',
-        hostUser: '',
+        hostUser: this.props.currentUser,
     };
 
     handleChange = (event) => {
@@ -29,11 +29,17 @@ class CreateEvent extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log(this.state);
+        // let newEventId;
         axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
           .then((res) => {
             console.log(res);
+            // newEventId = res.data.data._id;
+            // console.log(newEventId)
           })
           .catch((err) => console.log(err));
+        // axios.put(`${process.env.REACT_APP_API_URL}/users/${this.state.hostUser}`, {
+        //   eventsUserIsHosting: this.state.eventsUserIsHosting.concat([newEventId])
+        // }).then(response)
       }
     
     handleDatePickerSubmit = (e) => {
