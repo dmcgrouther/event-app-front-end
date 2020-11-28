@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import EventInformation from './EventInformation';
+import { Link } from 'react-router-dom';
 
-//get data
-//render data to page
 // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 
 class EventPage extends Component {
@@ -23,7 +22,8 @@ class EventPage extends Component {
             experienceLevel: '',
             eventLengthInHours: '',
             currentNonHostPlayerCount: '',
-            nonHostUsers: ''
+            nonHostUsers: '',
+            hostUser: '',
         };
         this.handleJoinEventClick = this.handleJoinEventClick.bind(this);
         this.handleRemoveCurrentUserFromEventClick = this.handleRemoveCurrentUserFromEventClick.bind(this);
@@ -46,6 +46,7 @@ class EventPage extends Component {
                 eventLengthInHours: res.data.data.eventLengthInHours,
                 nonHostUsers: res.data.data.nonHostUsers,
                 currentNonHostPlayerCount: res.data.data.nonHostUsers.length,
+                hostUser: res.data.data.hostUser,
             })
             console.log(res)
           })
@@ -70,10 +71,6 @@ class EventPage extends Component {
         console.log('hello')
         let index = this.state.nonHostUsers.indexOf(this.props.currentUser);
         console.log(`the index is ${index}`)
-        // console.log(`this.state.nonHostUsers is ${this.state.nonHostUsers}`);
-        // if (index > -1) {
-        //     this.state.nonHostUsers.splice(index, 1);
-        // }
         let newStateNonHostUsers = this.state.nonHostUsers;
         console.log(`this.state.nonHostUsers is ${this.state.nonHostUsers}`);
         console.log(`newStateNonHostUsers is ${newStateNonHostUsers}`);
@@ -94,7 +91,24 @@ class EventPage extends Component {
 
     render () {
 
-        if(this.state.nonHostUsers.includes(this.props.currentUser)){
+        if(this.props.currentUser === null){
+            return(
+                <>
+                    <EventInformation />
+                    <h4>In order to sign up for this event or others, you must be signed in.</h4>
+                    <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
+                    <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+                </>
+            )
+        }else if (this.props.currentUser === this.state.hostUser[0]){
+            //stuff
+            return(
+                <>
+                    <h1>Here is an event you are hosting</h1>
+                    <EventInformation />
+                </>
+            )
+        } else if(this.state.nonHostUsers.includes(this.props.currentUser)){
             return(
                 <>
                     <h1>You are registered for this event</h1>
