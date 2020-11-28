@@ -116,6 +116,8 @@ class EventPage extends Component {
                     <h1>You are registered for this event</h1>
                     <EventInformation />
                     <button onClick={this.handleRemoveCurrentUserFromEventClick}>Click here to un-register for the event</button>
+                    <p>If you have questions, you can reach out to the host for this event.</p>
+                    <p>Link to the event host's user page <Link to={`/users/${this.state.hostUser[0]}`}>here</Link>.</p>
                 </>
             )
         } else {
@@ -123,6 +125,7 @@ class EventPage extends Component {
                 <>
                     <EventInformation />
                     <button onClick={this.handleJoinEventClick}>Click here to join</button>
+                    <p>If you have questions, <Link to={`/users/${this.state.hostUser[0]}`}>here</Link> is a link to the hosts user page to get their contact info.</p>
                 </>
             )
         }
