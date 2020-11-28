@@ -15,6 +15,7 @@ class CreateEvent extends Component {
         typeOfEventActivity: '',
         eventDescription: '',
         experienceLevel: '',
+        eventLengthInHours: '',
     };
 
     handleChange = (event) => {
@@ -95,6 +96,10 @@ class CreateEvent extends Component {
                   <div className="form-group">
                     <label htmlFor="name">Experience Level</label>
                     <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="name">Estimated Game length (in hours)</label>
+                    <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="eventLengthInHours" name="eventLengthInHours" value={this.state.eventLengthInHours} />
                   </div>
                   <button className="btn btn-primary float-right" type="submit">Create Event</button>
                 </form>

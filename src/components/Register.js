@@ -19,13 +19,6 @@ class Register extends Component {
     });
   };
 
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)
-  //     .then((res) => console.log(res))
-  //     .catch((error) => console.log(error))
-  // }
-
   handleSubmit = (event) => {
     event.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)

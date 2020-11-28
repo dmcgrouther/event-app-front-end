@@ -17,6 +17,7 @@ class EventPage extends Component {
         typeOfEventActivity: '',
         eventDescription: '',
         experienceLevel: '',
+        eventLengthInHours: '',
     };
 
     componentDidMount () {
@@ -33,6 +34,7 @@ class EventPage extends Component {
                 typeOfEventActivity: res.data.data.typeOfEventActivity,
                 eventDescription: res.data.data.eventDescription,
                 experienceLevel: res.data.data.experienceLevel,
+                eventLengthInHours: res.data.data.eventLengthInHours,
             })
             console.log(res)
           })
@@ -66,6 +68,9 @@ class EventPage extends Component {
                 </div>
                 <div>
                     Event Description: {this.state.eventDescription}
+                </div>
+                <div>
+                    Estimated Game length (in hours): {this.state.eventLengthInHours}
                 </div>
             </>
         )
