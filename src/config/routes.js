@@ -15,7 +15,8 @@ export default ({ currentUser, setCurrentUser }) => (
         <Route exact path='/' component={ Home }/>
         <Route path='/about' component= { About }/>
         <Route path='/eventlist' component={ EventListPage }/>
-        <Route path='/register' component={ Register } />
+        {/* <Route path='/register' component={ Register } /> */}
+        <Route path='/register' render={() => <Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/login' render={() => <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/CreateEvent' component={ CreateEvent } />
         <Route path='/events/:eventId' component={EventPage}/>
