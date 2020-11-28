@@ -58,7 +58,7 @@ class ViewUserPage extends Component {
         .then(res => {
             console.log(res);
             this.props.setCurrentUser(null);
-            window.location = '/';
+            window.location = '/accountdeleted';
         }).catch(err => console.log(err));
     }
 
