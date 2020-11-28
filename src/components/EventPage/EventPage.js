@@ -65,6 +65,7 @@ class EventPage extends Component {
         }, (error) => {
             console.log(error)
         });
+        window.location.reload();
     }
 
     handleRemoveCurrentUserFromEventClick(){
@@ -87,6 +88,7 @@ class EventPage extends Component {
         }, (error) => {
             console.log(error)
         });
+        window.location.reload();
     }
 
     render () {
