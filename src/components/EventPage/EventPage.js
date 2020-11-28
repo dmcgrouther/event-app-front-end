@@ -1,0 +1,118 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+import EventInformation from './EventInformation';
+
+//get data
+//render data to page
+// https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
+
+class EventPage extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            eventName: '',
+            gameSystem: '',
+            gameEdition: '',
+            eventDate: '',
+            maximumNonHostPlayerCount: '',
+            howTheEventHappens: '',
+            meetupGatheringInfo: '',
+            typeOfEventActivity: '',
+            eventDescription: '',
+            experienceLevel: '',
+            eventLengthInHours: '',
+            currentNonHostPlayerCount: '',
+            nonHostUsers: ''
+        };
+        this.handleJoinEventClick = this.handleJoinEventClick.bind(this);
+        this.handleRemoveCurrentUserFromEventClick = this.handleRemoveCurrentUserFromEventClick.bind(this);
+    }
+
+    componentDidMount () {
+        axios.get(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`)
+          .then((res) => {
+            this.setState({
+                eventName: res.data.data.eventName,
+                gameSystem: res.data.data.gameSystem,
+                gameEdition: res.data.data.gameEdition,
+                eventDate: res.data.data.eventDate,
+                maximumNonHostPlayerCount: res.data.data.maximumNonHostPlayerCount,
+                howTheEventHappens: res.data.data.howTheEventHappens,
+                meetupGatheringInfo: res.data.data.meetupGatheringInfo,
+                typeOfEventActivity: res.data.data.typeOfEventActivity,
+                eventDescription: res.data.data.eventDescription,
+                experienceLevel: res.data.data.experienceLevel,
+                eventLengthInHours: res.data.data.eventLengthInHours,
+                nonHostUsers: res.data.data.nonHostUsers,
+                currentNonHostPlayerCount: res.data.data.nonHostUsers.length,
+            })
+            console.log(res)
+          })
+          .catch((err) => console.log(err));
+    }
+
+    handleJoinEventClick(){
+        console.log('clicked, yay!')
+        console.log(this.state.nonHostUsers)
+        console.log(this.props.currentUser)
+        axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, {
+            nonHostUsers: this.state.nonHostUsers.concat([this.props.currentUser]),
+            currentNonHostPlayerCount: this.state.nonHostUsers.length,
+        }).then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error)
+        });
+    }
+
+    handleRemoveCurrentUserFromEventClick(){
+        console.log('hello')
+        let index = this.state.nonHostUsers.indexOf(this.props.currentUser);
+        console.log(`the index is ${index}`)
+        // console.log(`this.state.nonHostUsers is ${this.state.nonHostUsers}`);
+        // if (index > -1) {
+        //     this.state.nonHostUsers.splice(index, 1);
+        // }
+        let newStateNonHostUsers = this.state.nonHostUsers;
+        console.log(`this.state.nonHostUsers is ${this.state.nonHostUsers}`);
+        console.log(`newStateNonHostUsers is ${newStateNonHostUsers}`);
+        if (index > -1) {
+            newStateNonHostUsers.splice(index, 1);
+        }
+        console.log(`newStateNonHostUsers is ${newStateNonHostUsers}`);
+
+        axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, {
+            nonHostUsers: newStateNonHostUsers,
+            currentNonHostPlayerCount: this.state.nonHostUsers.length,
+        }).then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error)
+        });
+    }
+
+    render () {
+
+        if(this.state.nonHostUsers.includes(this.props.currentUser)){
+            return(
+                <>
+                    <h1>You are registered for this event</h1>
+                    <EventInformation />
+                    <button onClick={this.handleRemoveCurrentUserFromEventClick}>Click here to un-register for the event</button>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <EventInformation />
+                    <button onClick={this.handleJoinEventClick}>Click here to join</button>
+                </>
+            )
+        }
+    }
+
+
+}
+
+export default EventPage;
