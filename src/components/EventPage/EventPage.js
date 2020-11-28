@@ -92,8 +92,17 @@ class EventPage extends Component {
     }
 
     render () {
-
-        if(this.props.currentUser === null){
+        if(this.props.currentUser === null && this.state.currentNonHostPlayerCount === this.state.maximumNonHostPlayerCount){
+            return(
+                <>
+                    <EventInformation />
+                    <h4>Currently the event is full. </h4>
+                    <h4>In order to sign up for this event or others, you must be signed in.</h4>
+                    <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
+                    <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+                </>
+            )
+        }else if(this.props.currentUser === null){
             return(
                 <>
                     <EventInformation />
@@ -103,7 +112,6 @@ class EventPage extends Component {
                 </>
             )
         }else if (this.props.currentUser === this.state.hostUser[0]){
-            //stuff
             return(
                 <>
                     <h1>Here is an event you are hosting</h1>
@@ -120,6 +128,14 @@ class EventPage extends Component {
                     <p>Link to the event host's user page <Link to={`/users/${this.state.hostUser[0]}`}>here</Link>.</p>
                 </>
             )
+        }else if(this.props.currentUser !== null && this.state.nonHostUsers.includes(this.props.currentUser) === false && this.state.currentNonHostPlayerCount === this.state.maximumNonHostPlayerCount){
+            return(
+                <>
+                    <EventInformation />
+                    <h4>Currently the event is full. </h4>
+                    <p>If you have questions, <Link to={`/users/${this.state.hostUser[0]}`}>here</Link> is a link to the hosts user page to get their contact info.</p>
+                </>
+            )
         } else {
             return (
                 <>
@@ -130,8 +146,6 @@ class EventPage extends Component {
             )
         }
     }
-
-
 }
 
 export default EventPage;
