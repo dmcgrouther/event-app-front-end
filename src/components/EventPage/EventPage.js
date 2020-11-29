@@ -117,7 +117,7 @@ class EventPage extends Component {
                 <>
                     <h1>Here is an event you are hosting</h1>
                     <EventInformation />
-                    <EventPageHostFunctions />
+                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers}/>
                 </>
             )
         } else if(this.state.nonHostUsers.includes(this.props.currentUser)){

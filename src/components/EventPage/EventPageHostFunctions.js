@@ -15,11 +15,7 @@ class EventPageHostFunctions extends Component {
     render() {
         return (
             <>
-                <h2>Here are the event attendees</h2>
-
-                <br />
-                <br />
-                <p>If you would like to delete the event, please do so below.</p> 
+                <p>If you would like to delete this event, you may do so below.</p> 
                 <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete this event?')) this.deleteThisEvent(event) } }>
                     Delete This Event
                 </button>

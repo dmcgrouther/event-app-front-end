@@ -8,10 +8,10 @@ const Navbar = (props) => {
                 <Link to={'/'}>Home</Link>
                 <Link to={'/About'}>About</Link>
                 <Link to={'/EventList'}>Event List</Link>
-                <Link to={'/Register'}>Register</Link>
-                <Link to={'/Login'}>Login</Link>
-                <button onClick={() => props.logout() }>Logout</button>
-                {/* {props.currentUser} */}
+                {!props.currentUser && <Link to={'/Register'}>Register</Link>}
+                {!props.currentUser && <Link to={'/Login'}>Login</Link>}
+                {props.currentUser && <Link to={`/users/${props.currentUser}`}>Your Info</Link>}
+                {props.currentUser && <button onClick={() => props.logout() }>Logout</button>}
             </nav>
         </header>
     );
