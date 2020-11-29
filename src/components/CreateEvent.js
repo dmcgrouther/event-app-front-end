@@ -40,45 +40,6 @@ class CreateEvent extends Component {
         });
     };
 
-    // //one way
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     console.log(this.state);
-    //     axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
-    //       .then((res) => {
-    //         console.log(res);
-    //       })
-    //       .catch((err) => console.log(err));
-    // }
-
-  //   //different way
-  //   async handleSubmit (event) {
-  //     event.preventDefault();
-  //     console.log(this.state);
-  //     let eventId;
-
-  //     const firstResponse = await Promise.all(
-  //     axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
-  //     .then((res) => {
-  //       console.log(res);
-  //       eventId = res.data.data._id;
-  //       console.log(eventId)
-  //     })
-  //     .catch((err) => console.log(err))
-  //     ),
-
-  //     // console.log(`eventId is ${this.eventId}`),
-
-  //     const secondResponse = await axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
-  //       eventsUserIsHosting: this.state.eventsUserIsHosting.concat(this.eventId)
-  //     })
-  //     .then((response) => {
-  //       console.log(response);
-  //     }, (error) => {
-  //       console.log(error)
-  //     })
-  // }
-
   handleSubmit = (event) => {
     event.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
@@ -98,15 +59,6 @@ class CreateEvent extends Component {
       })
       .catch((err) => console.log(err))
   }
-
-//   axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
-//     usersEventsAsAttendee: this.state.usersEventsAsAttendee.concat(window.location.pathname.split('/')[2])
-// })
-// .then((response) => {
-//     console.log(response);
-// },(error) => {
-//     console.log(error)
-// })
     
     handleDatePickerSubmit = (e) => {
       e.preventDefault();
