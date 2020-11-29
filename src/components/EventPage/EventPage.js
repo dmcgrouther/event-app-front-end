@@ -59,7 +59,7 @@ class EventPage extends Component {
         console.log(this.props.currentUser)
         axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, {
             nonHostUsers: this.state.nonHostUsers.concat([this.props.currentUser]),
-            currentNonHostPlayerCount: this.state.nonHostUsers.length,
+            currentNonHostPlayerCount: this.state.currentNonHostPlayerCount+1,
         }).then((response) => {
             console.log(response);
         }, (error) => {
@@ -82,7 +82,7 @@ class EventPage extends Component {
 
         axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, {
             nonHostUsers: newStateNonHostUsers,
-            currentNonHostPlayerCount: this.state.nonHostUsers.length,
+            currentNonHostPlayerCount: this.state.currentNonHostPlayerCount-1,
         }).then((response) => {
             console.log(response);
         }, (error) => {
