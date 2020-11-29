@@ -18,7 +18,21 @@ class CreateEvent extends Component {
         experienceLevel: '',
         eventLengthInHours: '',
         hostUser: this.props.currentUser,
+        //below state value is added so you can add this event the to users list of hosted events.
+        eventsUserIsHosting: '',
     };
+
+    //component did mount to get users hosting events
+    componentDidMount () {
+      axios.get(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`)
+      .then((res) => {
+        this.setState({
+          eventsUserIsHosting: res.data.data.eventsUserIsHosting
+        })
+        console.log(res)
+      })
+      .catch((err) => console.log(err))
+    }
 
     handleChange = (event) => {
         this.setState({
@@ -26,15 +40,73 @@ class CreateEvent extends Component {
         });
     };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state);
-        axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => console.log(err));
-    }
+    // //one way
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log(this.state);
+    //     axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
+    //       .then((res) => {
+    //         console.log(res);
+    //       })
+    //       .catch((err) => console.log(err));
+    // }
+
+  //   //different way
+  //   async handleSubmit (event) {
+  //     event.preventDefault();
+  //     console.log(this.state);
+  //     let eventId;
+
+  //     const firstResponse = await Promise.all(
+  //     axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
+  //     .then((res) => {
+  //       console.log(res);
+  //       eventId = res.data.data._id;
+  //       console.log(eventId)
+  //     })
+  //     .catch((err) => console.log(err))
+  //     ),
+
+  //     // console.log(`eventId is ${this.eventId}`),
+
+  //     const secondResponse = await axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
+  //       eventsUserIsHosting: this.state.eventsUserIsHosting.concat(this.eventId)
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     }, (error) => {
+  //       console.log(error)
+  //     })
+  // }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          eventsUserIsHosting: this.state.eventsUserIsHosting.concat(res.data.data._id)
+        })
+        axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
+          eventsUserIsHosting: this.state.eventsUserIsHosting
+        })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => console.log(error))
+      })
+      .catch((err) => console.log(err))
+      // window.location = `/events/${res.data.data._id}`;
+  }
+
+//   axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
+//     usersEventsAsAttendee: this.state.usersEventsAsAttendee.concat(window.location.pathname.split('/')[2])
+// })
+// .then((response) => {
+//     console.log(response);
+// },(error) => {
+//     console.log(error)
+// })
     
     handleDatePickerSubmit = (e) => {
       e.preventDefault();
