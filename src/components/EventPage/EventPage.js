@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import EventInformation from './EventInformation';
 import { Link } from 'react-router-dom';
+import EventPageHostFunctions from './EventPageHostFunctions'
 
 // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 
@@ -116,6 +117,7 @@ class EventPage extends Component {
                 <>
                     <h1>Here is an event you are hosting</h1>
                     <EventInformation />
+                    <EventPageHostFunctions />
                 </>
             )
         } else if(this.state.nonHostUsers.includes(this.props.currentUser)){
