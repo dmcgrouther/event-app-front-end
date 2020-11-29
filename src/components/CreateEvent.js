@@ -94,9 +94,9 @@ class CreateEvent extends Component {
           console.log(response)
         })
         .catch((error) => console.log(error))
+        window.location = `/events/${res.data.data._id}`;
       })
       .catch((err) => console.log(err))
-      // window.location = `/events/${res.data.data._id}`;
   }
 
 //   axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
