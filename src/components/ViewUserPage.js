@@ -57,7 +57,7 @@ class ViewUserPage extends Component {
         axios.delete(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
         .then(res => {
             console.log(res);
-            this.props.setCurrentUser(null);
+            this.props.setCurrentUser('');
             window.location = '/accountdeleted';
         }).catch(err => console.log(err));
     }
