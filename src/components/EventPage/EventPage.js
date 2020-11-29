@@ -27,6 +27,7 @@ class EventPage extends Component {
             hostUser: '',
             //
             usersEventsAsAttendee: '',
+            eventsUserIsHosting: '',
         };
         this.handleJoinEventClick = this.handleJoinEventClick.bind(this);
         this.handleRemoveCurrentUserFromEventClick = this.handleRemoveCurrentUserFromEventClick.bind(this);
@@ -59,9 +60,11 @@ class EventPage extends Component {
             axios.get(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`)
             .then((res) => {
                 this.setState({
-                    usersEventsAsAttendee: res.data.data.usersEventsAsAttendee
+                    usersEventsAsAttendee: res.data.data.usersEventsAsAttendee,
+                    eventsUserIsHosting: res.data.data.eventsUserIsHosting,
                 })
                 console.log(res)
+                console.log(`eventsUserIsHosting is ${this.state.eventsUserIsHosting}`)
             })
             .catch((err) => console.log(err))
 
@@ -162,7 +165,7 @@ class EventPage extends Component {
                 <>
                     <h1>Here is an event you are hosting</h1>
                     <EventInformation />
-                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers}/>
+                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers} eventsUserIsHosting={this.state.eventsUserIsHosting} currentUser={this.props.currentUser}/>
                 </>
             )
         } else if(this.state.nonHostUsers.includes(this.props.currentUser)){
