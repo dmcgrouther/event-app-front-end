@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// https://stackoverflow.com/questions/7310559/the-best-way-to-remove-array-element-by-value
 
 class EventPageHostFunctions extends Component {
     
@@ -24,6 +25,7 @@ class EventPageHostFunctions extends Component {
             this.setState({
                 eventsUserIsHosting: newEventsUserIsHosting,
             })
+
             axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
                 eventsUserIsHosting: this.state.eventsUserIsHosting 
             })
@@ -31,6 +33,15 @@ class EventPageHostFunctions extends Component {
                 console.log(response)
             })
             .catch((error) => console.log(error))
+
+            //before this. do get request for each attendee? update state of with that attendees list? and then edit?
+            
+            // this.props.nonHostUsers.forEach(nonHostUser => {
+            //     axios.put(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`, {
+            //         usersEventsAsAttendee: usersEventsAsAttendee.filter(val => val !== nonHostUser)
+            //     })
+            // });
+
             window.location = '/eventlist';
         }).catch(err => console.log(err));
     }
