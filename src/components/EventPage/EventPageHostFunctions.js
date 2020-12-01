@@ -36,13 +36,76 @@ class EventPageHostFunctions extends Component {
 
             //before this. do get request for each attendee? update state of with that attendees list? and then edit?
             
-            // this.props.nonHostUsers.forEach(nonHostUser => {
+            this.props.nonHostUsers.forEach(nonHostUser => {
+                console.log(`nonhostuser is ${nonHostUser}`)
+                axios.get(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`)
+                .then((res) => {
+                    console.log(res)
+                    this.setState({
+                        usersEventsAsAttendee: res.data.data.usersEventsAsAttendee,
+                    })
+                    
+
+                    console.log(`nonHostUser is ${nonHostUser}`)
+                    console.log('state below')
+                    console.log(this.state)
+    
+                    console.log('check below')
+                    console.log(this.state)
+                    console.log(this.state.usersEventsAsAttendee)
+                    let newIndex = this.state.usersEventsAsAttendee.indexOf(`${window.location.pathname.split('/')[2]}`);
+                    let newUsersEventsAsAttendee = this.state.usersEventsAsAttendee;
+                    if(newIndex > -1){
+                        newUsersEventsAsAttendee.splice(newIndex,1)
+                    }
+    
+                    this.setState({
+                        usersEventsAsAttendee: newUsersEventsAsAttendee
+                    })
+    
+                    axios.put(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`, {
+                        usersEventsAsAttendee: this.state.usersEventsAsAttendee
+                    })
+                    .then((response) => {
+                        console.log(response)
+                    })
+                    .catch((error) => console.log(error))
+
+
+                })
+                .catch((error) => console.log(error))
+
+                // console.log(`nonHostUser is ${nonHostUser}`)
+                // console.log('state below')
+                // console.log(this.state)
+
+                // console.log('check below')
+                // console.log(this.state)
+                // console.log(this.state.usersEventsAsAttendee)
+                // let newIndex = this.state.usersEventsAsAttendee.indexOf(`${window.location.pathname.split('/')[2]}`);
+                // let newUsersEventsAsAttendee = this.state.usersEventsAsAttendee;
+                // if(newIndex > -1){
+                //     newUsersEventsAsAttendee.splice(newIndex,1)
+                // }
+
+                // this.setState({
+                //     usersEventsAsAttendee: newUsersEventsAsAttendee
+                // })
+
+                // axios.put(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`, {
+                //     usersEventsAsAttendee: this.state.newUsersEventsAsAttendee
+                // })
+                // .then((response) => {
+                //     console.log(response)
+                // })
+                // .catch((error) => console.log(error))
+
             //     axios.put(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`, {
             //         usersEventsAsAttendee: usersEventsAsAttendee.filter(val => val !== nonHostUser)
             //     })
-            // });
+            });
 
-            window.location = '/eventlist';
+            // window.location = '/eventlist';
         }).catch(err => console.log(err));
     }
     

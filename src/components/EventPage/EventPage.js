@@ -26,11 +26,12 @@ class EventPage extends Component {
             nonHostUsers: '',
             hostUser: '',
             //
-            usersEventsAsAttendee: '',
+            usersEventsAsAttendee: [],
             eventsUserIsHosting: '',
         };
         this.handleJoinEventClick = this.handleJoinEventClick.bind(this);
         this.handleRemoveCurrentUserFromEventClick = this.handleRemoveCurrentUserFromEventClick.bind(this);
+        // this.deleteThisEvent = this.deleteThisEvent.bind(this);
     }
 
     componentDidMount () {
@@ -165,7 +166,7 @@ class EventPage extends Component {
                 <>
                     <h1>Here is an event you are hosting</h1>
                     <EventInformation />
-                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers} eventsUserIsHosting={this.state.eventsUserIsHosting} currentUser={this.props.currentUser}/>
+                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers} eventsUserIsHosting={this.state.eventsUserIsHosting} currentUser={this.props.currentUser} usersEventsAsAttendee={this.state.usersEventsAsAttendee}/>
                 </>
             )
         } else if(this.state.nonHostUsers.includes(this.props.currentUser)){
