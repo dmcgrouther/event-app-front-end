@@ -3,6 +3,32 @@ import axios from 'axios';
 // https://stackoverflow.com/questions/7310559/the-best-way-to-remove-array-element-by-value
 
 class EventPageHostFunctions extends Component {
+
+    // getUsersInEventNames () {
+    //     console.log(`getUsersInEventNames activated.`)
+    //     this.props.nonHostUsers.map((nonHostUser) => {
+    //         console.log(nonHostUser)
+    //         axios.get(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`)
+    //         .then(res => {
+    //             console.log(res)
+
+    //             let userObject = {
+    //                 objectUserName: res.data.data.name,
+    //                 objectId: res.data.data._id,
+    //             }
+
+    //             this.setState({
+    //                 usersInEventToDisplayName: this.state.usersInEventToDisplayName.concat(userObject)
+    //             })
+    //         })
+    //         .catch((error) => console.log(error))
+    //     })
+    // }
+
+    handleClick(e){
+        console.log(e)
+        window.location = `/users/${e}`
+    }
     
     deleteThisEvent(){
         console.log('deleteth thee!')
@@ -112,11 +138,18 @@ class EventPageHostFunctions extends Component {
     render() {
         return (
             <>
+                <h2>The event attendees are listed below</h2>
+                <ul>
+                    {this.props.usersInEventToDisplayName.map((userInEventToDisplayName, i) => (
+                        <li key={i} onClick={ () => this.handleClick(userInEventToDisplayName.objectId) }>{userInEventToDisplayName.objectUserName}</li>
+                    ))}
+                </ul>
+
+                <br />
                 <p>If you would like to delete this event, you may do so below.</p> 
                 <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete this event?')) this.deleteThisEvent(event) } }>
                     Delete This Event
                 </button>
-                <p>Your attendees may have their contact info listed if you want to inform them</p>
             </>
         )
     }

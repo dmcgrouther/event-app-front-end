@@ -28,10 +28,33 @@ class EventPage extends Component {
             //
             usersEventsAsAttendee: [],
             eventsUserIsHosting: '',
+            //
+            usersInEventToDisplayName: [],
         };
         this.handleJoinEventClick = this.handleJoinEventClick.bind(this);
         this.handleRemoveCurrentUserFromEventClick = this.handleRemoveCurrentUserFromEventClick.bind(this);
         // this.deleteThisEvent = this.deleteThisEvent.bind(this);
+    }
+
+    getUsersInEventNames () {
+        console.log(`getUsersInEventNames activated.`)
+        this.state.nonHostUsers.map((nonHostUser) => {
+            console.log(nonHostUser)
+            axios.get(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`)
+            .then(res => {
+                console.log(res)
+
+                let userObject = {
+                    objectUserName: res.data.data.name,
+                    objectId: res.data.data._id,
+                }
+
+                this.setState({
+                    usersInEventToDisplayName: this.state.usersInEventToDisplayName.concat(userObject)
+                })
+            })
+            .catch((error) => console.log(error))
+        })
     }
 
     componentDidMount () {
@@ -55,6 +78,7 @@ class EventPage extends Component {
                   hostUser: res.data.data.hostUser,
               })
               console.log(res)
+              this.getUsersInEventNames()
             })
             .catch((err) => console.log(err)),
 
@@ -166,7 +190,7 @@ class EventPage extends Component {
                 <>
                     <h1>Here is an event you are hosting</h1>
                     <EventInformation />
-                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers} eventsUserIsHosting={this.state.eventsUserIsHosting} currentUser={this.props.currentUser} usersEventsAsAttendee={this.state.usersEventsAsAttendee}/>
+                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers} usersInEventToDisplayName={this.state.usersInEventToDisplayName} eventsUserIsHosting={this.state.eventsUserIsHosting} currentUser={this.props.currentUser} usersEventsAsAttendee={this.state.usersEventsAsAttendee}/>
                 </>
             )
         } else if(this.state.nonHostUsers.includes(this.props.currentUser)){
