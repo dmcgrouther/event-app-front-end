@@ -9,6 +9,8 @@ class ViewUserPage extends Component {
             name: '',
             contactInfo: '',
             profilePicture: '',
+            usersEventsAsAttendee: [],
+            eventsUserIsHosting: [],
         }
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleContactInfoChange = this.handleContactInfoChange.bind(this);
@@ -21,6 +23,8 @@ class ViewUserPage extends Component {
             this.setState({
                 name: res.data.data.name,
                 contactInfo: res.data.data.contactInfo,
+                usersEventsAsAttendee: res.data.data.usersEventsAsAttendee,
+                eventsUserIsHosting: res.data.data.eventsUserIsHosting,
             })
             console.log(res)
           })
@@ -85,14 +89,9 @@ class ViewUserPage extends Component {
                     <br />
                     <br />
                     <h4>If you would like to delete your account, you can do so by clicking the button below.</h4>
-                    {/* <button onClick={this.deleteYourAccount}>Delete My Account</button> */}
-
                     <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
                         Delete My Account
                     </button>
-                    
-                    {/* <h4>Are you sure you want to delete your accout? Click below to do so.</h4>
-                    <button onClick={this.confirmAccountDeletion}>Yes, I want to delete my account.</button> */}
                 </>
               );
         } else {
@@ -101,7 +100,6 @@ class ViewUserPage extends Component {
                     <h1>User Name: {this.state.name}</h1>
                     <h1>User Contact Info: {this.state.contactInfo}</h1>
                     <h1>{this.state.profilePicture}</h1>
-                    {/* {this.props.currentUser} */}
                 </>
             )
         }

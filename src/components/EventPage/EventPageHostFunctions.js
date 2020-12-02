@@ -105,7 +105,7 @@ class EventPageHostFunctions extends Component {
             //     })
             });
 
-            // window.location = '/eventlist';
+            window.location = '/eventlist';
         }).catch(err => console.log(err));
     }
     
