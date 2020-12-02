@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 //https://gist.github.com/primaryobjects/aacf6fa49823afb2f6ff065790a5b402
+// https://stackoverflow.com/questions/54712518/how-to-render-results-from-axios-function-with-mapping
 
 class ViewUserPage extends Component {
     constructor(props){
@@ -11,10 +12,37 @@ class ViewUserPage extends Component {
             profilePicture: '',
             usersEventsAsAttendee: [],
             eventsUserIsHosting: [],
+            userEventsToDisplayInfo: [],
         }
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleContactInfoChange = this.handleContactInfoChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleClick(e) {
+        console.log(e)
+        window.location = `/events/${e}`
+    }
+
+    getUsersEventsNamesAsAttendee () {
+        this.state.usersEventsAsAttendee.map((usersEventAsAttendee) => {
+            console.log(usersEventAsAttendee)
+            axios.get(`${process.env.REACT_APP_API_URL}/events/${usersEventAsAttendee}`)
+            .then(res => {
+                console.log(res)
+
+                let eventObject = {
+                    objectEventName: res.data.data.eventName,
+                    objectEventDate: res.data.data.eventDate,
+                    objectId: res.data.data._id,
+                }
+
+                this.setState({                    
+                    userEventsToDisplayInfo: this.state.userEventsToDisplayInfo.concat(eventObject)
+                })
+            })
+            .catch((error) => console.log(error))
+        })
     }
 
     componentDidMount () {
@@ -27,6 +55,7 @@ class ViewUserPage extends Component {
                 eventsUserIsHosting: res.data.data.eventsUserIsHosting,
             })
             console.log(res)
+            this.getUsersEventsNamesAsAttendee()
           })
           .catch((err) => console.log(err));
     }
@@ -92,6 +121,15 @@ class ViewUserPage extends Component {
                     <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
                         Delete My Account
                     </button>
+
+                    <div>
+                        <h2>Here are your upcoming events as an attendee</h2>
+                        <ul>
+                            {this.state.userEventsToDisplayInfo.map((userEventToDisplayInfo, i) => (
+                                <li key={i} onClick={ () => this.handleClick(userEventToDisplayInfo.objectId) }>{userEventToDisplayInfo.objectEventName} at {userEventToDisplayInfo.objectEventDate}</li>
+                            ))}
+                        </ul>
+                    </div>
                 </>
               );
         } else {
