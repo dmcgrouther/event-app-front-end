@@ -12,7 +12,8 @@ class ViewUserPage extends Component {
             profilePicture: '',
             usersEventsAsAttendee: [],
             eventsUserIsHosting: [],
-            userEventsToDisplayInfo: [],
+            userEventsAsAttendeeToDisplayInfo: [],
+            userEventsAsHostToDisplayInfo: [],
         }
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleContactInfoChange = this.handleContactInfoChange.bind(this);
@@ -38,7 +39,28 @@ class ViewUserPage extends Component {
                 }
 
                 this.setState({                    
-                    userEventsToDisplayInfo: this.state.userEventsToDisplayInfo.concat(eventObject)
+                    userEventsAsAttendeeToDisplayInfo: this.state.userEventsAsAttendeeToDisplayInfo.concat(eventObject)
+                })
+            })
+            .catch((error) => console.log(error))
+        })
+    }
+
+    getUsersEventsNamesAsHost () {
+        this.state.eventsUserIsHosting.map((eventUserIsHosting) => {
+            console.log(eventUserIsHosting)
+            axios.get(`${process.env.REACT_APP_API_URL}/events/${eventUserIsHosting}`)
+            .then(res => {
+                console.log(res)
+
+                let eventHostingObject = {
+                    eventHostingObjectName: res.data.data.eventName,
+                    eventHostingObjectDate: res.data.data.eventDate,
+                    eventHostingObjectId: res.data.data._id,
+                }
+
+                this.setState({
+                    userEventsAsHostToDisplayInfo: this.state.userEventsAsHostToDisplayInfo.concat(eventHostingObject)
                 })
             })
             .catch((error) => console.log(error))
@@ -56,6 +78,7 @@ class ViewUserPage extends Component {
             })
             console.log(res)
             this.getUsersEventsNamesAsAttendee()
+            this.getUsersEventsNamesAsHost()
           })
           .catch((err) => console.log(err));
     }
@@ -116,17 +139,22 @@ class ViewUserPage extends Component {
                     <input type="submit" value="Save Changes" />
                     </form>
                     <br />
-                    <br />
                     <h4>If you would like to delete your account, you can do so by clicking the button below.</h4>
                     <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
                         Delete My Account
                     </button>
-
+                    <br />
                     <div>
-                        <h2>Here are your upcoming events as an attendee</h2>
+                        <h2>Here are your upcoming events as an attendee.</h2>
                         <ul>
-                            {this.state.userEventsToDisplayInfo.map((userEventToDisplayInfo, i) => (
-                                <li key={i} onClick={ () => this.handleClick(userEventToDisplayInfo.objectId) }>{userEventToDisplayInfo.objectEventName} at {userEventToDisplayInfo.objectEventDate}</li>
+                            {this.state.userEventsAsAttendeeToDisplayInfo.map((userEventAsAttendeeToDisplayInfo, i) => (
+                                <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} at {userEventAsAttendeeToDisplayInfo.objectEventDate}</li>
+                            ))}
+                        </ul>
+                        <h2>Here are your upcoming events as a host.</h2>
+                        <ul>
+                            {this.state.userEventsAsHostToDisplayInfo.map((userEventAsHostToDisplayInfo, i) => (
+                                <li key={i} onClick={ () => this.handleClick(userEventAsHostToDisplayInfo.eventHostingObjectId) }>{userEventAsHostToDisplayInfo.eventHostingObjectName} {userEventAsHostToDisplayInfo.eventHostingObjectDate}</li>
                             ))}
                         </ul>
                     </div>
