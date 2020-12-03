@@ -136,22 +136,36 @@ class EventPageHostFunctions extends Component {
     }
     
     render() {
-        return (
-            <>
-                <h2>The event attendees are listed below</h2>
-                <ul>
-                    {this.props.usersInEventToDisplayName.map((userInEventToDisplayName, i) => (
-                        <li key={i} onClick={ () => this.handleClick(userInEventToDisplayName.objectId) }>{userInEventToDisplayName.objectUserName}</li>
-                    ))}
-                </ul>
 
-                <br />
-                <p>If you would like to delete this event, you may do so below.</p> 
-                <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete this event?')) this.deleteThisEvent(event) } }>
-                    Delete This Event
-                </button>
-            </>
-        )
+        if(this.props.usersInEventToDisplayName.length === 0){
+            return(
+                <>
+                    <h1>Currently there are no attendees for this event.</h1>
+                    <br />
+                    <p>If you would like to delete this event, you may do so below.</p> 
+                    <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete this event?')) this.deleteThisEvent(event) } }>
+                        Delete This Event
+                    </button>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <h2>The event attendees are listed below</h2>
+                    <ul>
+                        {this.props.usersInEventToDisplayName.map((userInEventToDisplayName, i) => (
+                            <li key={i} onClick={ () => this.handleClick(userInEventToDisplayName.objectId) }>{userInEventToDisplayName.objectUserName}</li>
+                        ))}
+                    </ul>
+    
+                    <br />
+                    <p>If you would like to delete this event, you may do so below.</p> 
+                    <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete this event?')) this.deleteThisEvent(event) } }>
+                        Delete This Event
+                    </button>
+                </>
+            )
+        }
     }
 }
 
