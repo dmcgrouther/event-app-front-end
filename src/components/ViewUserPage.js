@@ -109,12 +109,21 @@ class ViewUserPage extends Component {
 
     deleteYourAccount(event){
         // event.preventDefault();
+
+        //delete account.
+        //for each eventUserIsHosting in eventsUserIsHosting
+        //axios get request on eventUserIsHosting
+        //get info on the attendees
+        //get request on each attendee 
+        //edit user info to not have the eventUserIsHosting
+        //axios delete request on eventUserIsHosting
+
         console.log('delete delete!')
         axios.delete(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
         .then(res => {
             console.log(res);
             this.props.setCurrentUser('');
-            window.location = '/accountdeleted';
+            // window.location = '/accountdeleted';
         }).catch(err => console.log(err));
     }
 

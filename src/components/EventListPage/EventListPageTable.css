@@ -10,23 +10,29 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #4CAF50;
+    background-color: rgb(150, 150, 150);
     color: white;
 }
 
 #events-table {
     text-align: center;
     border-collapse: collapse;
-    border: 3px solid #ddd;
+    /* border: 3px solid #ddd; */
+    border: 3px solid rgb(88, 88, 88);
+    /* rgb(88, 88, 88); */
     width: 100%;
 }
 
 #events-table td, #events-table th {
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
+    border: 1px solid rgb(88, 88, 88);
     padding: 8px;
 }
 
-/* #events-table tr:hover {background-color: rgb(213, 255, 224);} */
+.event:hover {
+    background-color: rgb(235, 235, 235);
+    transition: 500ms;
+}
 
 #event-list-bottom-text{
     text-align: center;

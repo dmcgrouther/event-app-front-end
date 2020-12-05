@@ -1,0 +1,13 @@
+.about__header{
+    text-align: center;
+}
+
+.about__sentence {
+    text-align: left;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+}
+
+.about__section {
+    margin-top: 5%;
+}
