@@ -36,17 +36,20 @@ class Login extends Component {
       <div className="container mt-4">
           <div className="row">
             <div className="col-md-4 offset-md-4">
-              <h4 className="mb-3">Login</h4>
+              <h1 className="mb-3">Login</h1>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="name">Email</label>
+                  <br />
                   <input onChange={this.handleChange} className="form-control form-control-lg" type="email" id="email" name="email" value={this.state.email} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
+                  <br />
                   <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password" name="password" value={this.state.password} />
                 </div>
-                <button className="btn btn-primary float-right" type="submit">Login</button>
+                <br />
+                <button className="btn btn-primary float-right call-to-action-button" type="submit">Login</button>
               </form>
             </div>
           </div>
