@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 //https://gist.github.com/primaryobjects/aacf6fa49823afb2f6ff065790a5b402
 // https://stackoverflow.com/questions/54712518/how-to-render-results-from-axios-function-with-mapping
 
@@ -15,9 +16,6 @@ class ViewUserPage extends Component {
             userEventsAsAttendeeToDisplayInfo: [],
             userEventsAsHostToDisplayInfo: [],
         }
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleContactInfoChange = this.handleContactInfoChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleClick(e) {
@@ -82,16 +80,6 @@ class ViewUserPage extends Component {
           })
           .catch((err) => console.log(err));
     }
-
-    handleNameChange(event){
-        this.setState({name: event.target.value})
-        console.log(this.state.name)
-    }
-
-    handleContactInfoChange(event){
-        this.setState({contactInfo: event.target.value})
-        console.log(this.state.contactInfo)
-    }
     
     handleSubmit(event){
         event.preventDefault();
@@ -133,25 +121,7 @@ class ViewUserPage extends Component {
                 <>
                     <h1>Your username is: {this.state.name}</h1>
                     <h1>Your contact information is: {this.state.contactInfo}</h1>
-                    <h4>If you would like to edit your username and contact information (not required), you may do so below.</h4>
-                    <form onSubmit={this.handleSubmit}>
-                    <label>
-                        User Name:
-                        <input type="text" value={this.state.name} onChange={this.handleNameChange} />
-                    </label>
-                    <br />
-                    <label>
-                        Contact Info:
-                        <input type="text" value={this.state.contactInfo} onChange={this.handleContactInfoChange} />
-                    </label>
-                    <br />
-                    <input type="submit" value="Save Changes" />
-                    </form>
-                    <br />
-                    <h4>If you would like to delete your account, you can do so by clicking the button below.</h4>
-                    <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
-                        Delete My Account
-                    </button>
+                    <p>If you would like to edit your username and contact information, you may do so <Link to={`/edituserpage/${window.location.pathname.split('/')[2]}`}>here</Link>.</p>
                     <br />
                     <div>
                         <h2>Here are your upcoming events as an attendee.</h2>
@@ -168,6 +138,12 @@ class ViewUserPage extends Component {
                             ))}
                         </ul>
                     </div>
+                    <br />
+                    <br />
+                    <h4>If you would like to delete your account, you can do so by clicking the button below.</h4>
+                    <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
+                        Delete My Account
+                    </button>
                 </>
               );
         } else {

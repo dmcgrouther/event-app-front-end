@@ -10,6 +10,8 @@ import EventPage from '../components/EventPage/EventPage';
 import ViewUserPage from '../components/ViewUserPage';
 import AccountDeleted from '../components/AccountDeleted';
 
+import EditUserPage from '../components/EditUserPage'
+
 export default ({ currentUser, setCurrentUser }) => (
     <Switch>
         <Route exact path='/' component={ Home }/>
@@ -23,5 +25,6 @@ export default ({ currentUser, setCurrentUser }) => (
         <Route path='/events/:eventId' render={() => <EventPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/users/:userId' render={() => <ViewUserPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/accountDeleted' component={ AccountDeleted } />
+        <Route path='/edituserpage/:userId' render={() => <EditUserPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
     </Switch>
 );
