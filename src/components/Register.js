@@ -20,14 +20,19 @@ class Register extends Component {
   };
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)
-      .then((res) => {
-        console.log(res)
-        this.props.setCurrentUser(res.data.data);
-        window.location = '/eventlist';
-      })
-      .catch((error) => console.log(error))
+    if (this.state.password !== this.state.password2){
+      alert("Passwords do not match. Please try again.")
+      event.preventDefault();
+    } else {
+      event.preventDefault();
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)
+        .then((res) => {
+          console.log(res)
+          this.props.setCurrentUser(res.data.data);
+          window.location = '/eventlist';
+        })
+        .catch((error) => console.log(error))
+    }
   }
 
   render() {
