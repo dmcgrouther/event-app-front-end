@@ -9,8 +9,8 @@ import CreateEvent from '../components/CreateEvent';
 import EventPage from '../components/EventPage/EventPage';
 import ViewUserPage from '../components/ViewUserPage';
 import AccountDeleted from '../components/AccountDeleted';
-
-import EditUserPage from '../components/EditUserPage'
+import EditUserPage from '../components/EditUserPage';
+import EditEventPage from '../components/EditEventPage';
 
 export default ({ currentUser, setCurrentUser }) => (
     <Switch>
@@ -25,6 +25,7 @@ export default ({ currentUser, setCurrentUser }) => (
         <Route path='/events/:eventId' render={() => <EventPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/users/:userId' render={() => <ViewUserPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/accountDeleted' component={ AccountDeleted } />
-        <Route path='/edituserpage/:userId' render={() => <EditUserPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path='/edituser/:userId' render={() => <EditUserPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path='/editevent/:eventId' render={() => <EditEventPage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
     </Switch>
 );

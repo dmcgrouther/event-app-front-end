@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // https://stackoverflow.com/questions/7310559/the-best-way-to-remove-array-element-by-value
 
 class EventPageHostFunctions extends Component {
@@ -140,6 +141,7 @@ class EventPageHostFunctions extends Component {
         if(this.props.usersInEventToDisplayName.length === 0){
             return(
                 <>
+                    <p>Click <Link to={`/editevent/${window.location.pathname.split('/')[2]}`}>here</Link> to edit this event.</p>
                     <h1>Currently there are no attendees for this event.</h1>
                     <br />
                     <p>If you would like to delete this event, you may do so below.</p> 
@@ -151,6 +153,7 @@ class EventPageHostFunctions extends Component {
         } else {
             return (
                 <>
+                    <p>Click <Link to={`/editevent/${window.location.pathname.split('/')[2]}`}>here</Link> to edit this event.</p>
                     <h2>The event attendees are listed below</h2>
                     <ul>
                         {this.props.usersInEventToDisplayName.map((userInEventToDisplayName, i) => (

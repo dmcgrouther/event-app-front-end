@@ -121,7 +121,7 @@ class ViewUserPage extends Component {
                 <>
                     <h1>Your username is: {this.state.name}</h1>
                     <h1>Your contact information is: {this.state.contactInfo}</h1>
-                    <p>If you would like to edit your username and contact information, you may do so <Link to={`/edituserpage/${window.location.pathname.split('/')[2]}`}>here</Link>.</p>
+                    <p>If you would like to edit your username and contact information, you may do so <Link to={`/edituser/${window.location.pathname.split('/')[2]}`}>here</Link>.</p>
                     <br />
                     <div>
                         <h2>Here are your upcoming events as an attendee.</h2>
