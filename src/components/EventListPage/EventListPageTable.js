@@ -48,7 +48,9 @@ class EventListPageTable extends Component {
                     <td>{eventName}</td>
                     <td>{gameSystem}</td>
                     <td>{howTheEventHappens}</td>
-                    <td>{eventDate}</td>
+                    {/* <td>{eventDate}</td> */}
+                    {/* <td>{`${new Date(eventDate).toLocaleString()}`}</td> */}
+                    <td>{`${new Date(eventDate).toLocaleString()} ${new Date(eventDate).toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]}`}</td>
                     <td>{currentNonHostPlayerCount || 0 } of {maximumNonHostPlayerCount}</td>
                     <td>{experienceLevel}</td>
                 </tr>

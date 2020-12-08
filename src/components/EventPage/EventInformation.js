@@ -21,6 +21,7 @@ class EventInformation extends Component {
             currentNonHostPlayerCount: '',
             nonHostUsers: ''
         };
+        // this.convertTimeToHumanReadable = this.convertTimeToHumanReadable.bind(this);
     }
 
     componentDidMount () {
@@ -30,6 +31,7 @@ class EventInformation extends Component {
                 eventName: res.data.data.eventName,
                 gameSystem: res.data.data.gameSystem,
                 gameEdition: res.data.data.gameEdition,
+                // eventDate: new Date(res.data.data.eventDate).toLocaleString(),
                 eventDate: res.data.data.eventDate,
                 maximumNonHostPlayerCount: res.data.data.maximumNonHostPlayerCount,
                 howTheEventHappens: res.data.data.howTheEventHappens,
@@ -46,6 +48,13 @@ class EventInformation extends Component {
           .catch((err) => console.log(err));
     }
 
+    // convertTimeToHumanReadable (time) {
+    //     let dateAndTime = new Date('2020-12-08T19:00:00.000Z').toLocaleString()
+    //     let timeZone = new Date('2020-12-08T19:00:00.000Z').toTimeString().split(' ').slice(2).join(" ")
+    //     return (`${dateAndTime} ${timeZone}`)
+    //     // console.log(displayTime('2020-12-08T19:00:00.000Z'))
+    // }
+
     render() {
         return(
             <>
@@ -57,7 +66,7 @@ class EventInformation extends Component {
                         Game Edition: {this.state.gameEdition}
                     </div>
                     <div>
-                        Event Date: {this.state.eventDate}
+                        Event Date: {`${new Date(this.state.eventDate).toLocaleString()} ${new Date(this.state.eventDate).toTimeString().split(' ').slice(2).join(" ")}`}
                     </div>
                     <div>
                         Non host max players: {this.state.maximumNonHostPlayerCount}

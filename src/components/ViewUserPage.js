@@ -122,8 +122,8 @@ class ViewUserPage extends Component {
         axios.delete(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
         .then(res => {
             console.log(res);
-            this.props.setCurrentUser('');
-            window.location = '/accountdeleted';
+            // this.props.setCurrentUser('');
+            // window.location = '/accountdeleted';
         }).catch(err => console.log(err));
     }
 
@@ -157,13 +157,14 @@ class ViewUserPage extends Component {
                         <h2>Here are your upcoming events as an attendee.</h2>
                         <ul>
                             {this.state.userEventsAsAttendeeToDisplayInfo.map((userEventAsAttendeeToDisplayInfo, i) => (
-                                <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} at {userEventAsAttendeeToDisplayInfo.objectEventDate}</li>
+                                // <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} {userEventAsAttendeeToDisplayInfo.objectEventDate}</li>
+                                <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} {`${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toLocaleString()} ${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
                             ))}
                         </ul>
                         <h2>Here are your upcoming events as a host.</h2>
                         <ul>
                             {this.state.userEventsAsHostToDisplayInfo.map((userEventAsHostToDisplayInfo, i) => (
-                                <li key={i} onClick={ () => this.handleClick(userEventAsHostToDisplayInfo.eventHostingObjectId) }>{userEventAsHostToDisplayInfo.eventHostingObjectName} {userEventAsHostToDisplayInfo.eventHostingObjectDate}</li>
+                                <li key={i} onClick={ () => this.handleClick(userEventAsHostToDisplayInfo.eventHostingObjectId) }>{userEventAsHostToDisplayInfo.eventHostingObjectName} {`${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toLocaleString()} ${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
                             ))}
                         </ul>
                     </div>
