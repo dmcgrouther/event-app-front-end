@@ -37,9 +37,21 @@ class EventListPageTable extends Component {
     }
 
     renderTableData() {
-        return this.state.events.map((event, index) => {
+        const sortedEventsByDate = this.state.events;
+        sortedEventsByDate.sort(function(a,b){
+            let dateA = new Date(a.eventDate), dateB = new Date(b.eventDate);
+            return dateA - dateB
+        });
+
+        return sortedEventsByDate.map((event, index) => {
+        // return this.state.events.map((event, index) => {
             const { eventName, gameSystem, howTheEventHappens, eventDate, maximumNonHostPlayerCount, currentNonHostPlayerCount , experienceLevel} = event
-            return (
+            let dateAndTimeRightNow = new Date();
+            let eventDateToCompare = new Date(eventDate)
+
+            // console.log(`event is ${eventDateToCompare.getTime()} dateAndTimeRightNow is ${dateAndTimeRightNow.getTime()}`)
+            
+            if(eventDateToCompare.getTime() > dateAndTimeRightNow.getTime() ) return (
                 
                 <tr className="event" key={event._id} onClick={ () => this.handleClick(event._id) }>
                     {/* <td><span onClick={this.handleClick(event._id)}>{eventName}</span></td> */}
