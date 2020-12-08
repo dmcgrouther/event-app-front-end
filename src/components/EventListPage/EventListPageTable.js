@@ -73,9 +73,6 @@ class EventListPageTable extends Component {
     render() {
         return (
             <div>
-                <h1 id="event-list-header">Upcoming Game Sessions</h1>
-                <p className="event-list-top-text">*Account needed to create or signup for events*</p>
-                <p className="event-list-top-text">Click on an event to learn more!</p>
                 <table id="events-table">
                     <tbody>
                         <tr id="table-header">{this.renderTableHeader()}</tr>

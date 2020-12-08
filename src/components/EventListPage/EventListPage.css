@@ -1,0 +1,15 @@
+#event-list-header{
+    text-align: center;
+}
+
+.event-list-top-text{
+    text-align: center;
+}
+
+#table-header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(150, 150, 150);
+    color: white;
+}
