@@ -138,7 +138,7 @@ class CreateEvent extends Component {
                       <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="name">Estimated Game length (in hours)</label>
+                      <label htmlFor="name">Estimated Event Length (in hours)</label>
                       <br />
                       <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="eventLengthInHours" name="eventLengthInHours" value={this.state.eventLengthInHours} />
                     </div>
