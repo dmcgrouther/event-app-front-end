@@ -24,7 +24,7 @@ class DateAndTimePick extends Component {
                         timeCaption="Time"
                         dateFormat="MMMM d, yyyy h:mm aa"
                     />
-                    <button className="btn btn-primary">Show Date</button>
+                    {/* <button className="btn btn-primary">Show Date</button> */}
                 </div>
             </form>
         )

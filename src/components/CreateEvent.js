@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DateAndTimePick from './DateAndTimePick';
 import { Link } from 'react-router-dom';
+import './CreateEvent.css';
 
 class CreateEvent extends Component {
 
@@ -86,12 +87,23 @@ class CreateEvent extends Component {
               <div className="row">
                 <div className="col-md-4 offset-md-4">
                   <h1 className="mb-3">Create Event</h1>
+                  <p className="event-date">Event Time and Date</p>
                   <DateAndTimePick 
                     handleDatePickerSubmit={this.handleDatePickerSubmit}
                     handleDatePickerChange={this.handleDatePickerChange}
                     eventDate={this.state.eventDate}
                   />
                   <form onSubmit={this.handleSubmit}>
+                      
+                    {/* <div className="form-group">
+                      <label htmlFor="name">Event Date</label>
+                      <DateAndTimePick 
+                        handleDatePickerSubmit={this.handleDatePickerSubmit}
+                        handleDatePickerChange={this.handleDatePickerChange}
+                        eventDate={this.state.eventDate}
+                      />
+                    </div> */}
+
                     <div className="form-group">
                       <label htmlFor="name">Event Name</label>
                       <br />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import DateAndTimePick from './DateAndTimePick';
 
 class EditEventPage extends Component {
     constructor(props){
@@ -19,6 +20,8 @@ class EditEventPage extends Component {
             eventLengthInHours: '',
             hostUser: '',
         }
+        this.handleDatePickerSubmit = this.handleDatePickerSubmit.bind(this);
+        this.handleDatePickerChange = this.handleDatePickerChange.bind(this);
     }
     componentDidMount () {
         axios.get(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`)
@@ -40,6 +43,17 @@ class EditEventPage extends Component {
         })
     }
 
+    handleDatePickerSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state.eventDate)
+      }
+  
+      handleDatePickerChange = (date) => {
+        this.setState({
+            eventDate: date
+        })
+      }
+
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
@@ -58,10 +72,26 @@ class EditEventPage extends Component {
 
     render() {
         if(this.props.currentUser === this.state.hostUser[0]){
+            // console.log(new Date(this.state.eventDate).toUTCString())
             return(
                 <>
                     <h1>You may edit the event information below</h1>
+
+                    <DateAndTimePick 
+                        handleDatePickerSubmit={this.handleDatePickerSubmit}
+                        handleDatePickerChange={this.handleDatePickerChange}
+                        // eventDate={new Date(this.state.eventDate).toISOString().valueOf()}
+                        eventDate={new Date(this.state.eventDate)}
+                    />
+
                     <form onSubmit={this.handleSubmit}>
+
+                        {/* <div className="form-group">
+                        <label htmlFor="name">Event time</label>
+                        <br />
+                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="eventDate" name="eventDate" value={new Date(this.state.eventDate).toLocaleString()} />
+                        </div> */}
+
                         <div className="form-group">
                         <label htmlFor="name">Event Name</label>
                         <br />
@@ -116,6 +146,11 @@ class EditEventPage extends Component {
                         <button className="btn btn-primary float-right call-to-action-button" type="submit">Edit Event</button>
                   </form>
                   <p>Click <Link to={`/events/${window.location.pathname.split('/')[2]}`}>here</Link> to view the event information.</p>
+                  {/* <DateAndTimePick 
+                    handleDatePickerSubmit={this.handleDatePickerSubmit}
+                    handleDatePickerChange={this.handleDatePickerChange}
+                    eventDate={this.state.eventDate}
+                  /> */}
                 </>
             )
         } else if(this.props.currentUser !== this.state.hostUser[0]) {
