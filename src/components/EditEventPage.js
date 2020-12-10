@@ -76,7 +76,8 @@ class EditEventPage extends Component {
             return(
                 <>
                     <h1>You may edit the event information below</h1>
-
+                    
+                    <p className="event-date">Event Time and Date</p>
                     <DateAndTimePick 
                         handleDatePickerSubmit={this.handleDatePickerSubmit}
                         handleDatePickerChange={this.handleDatePickerChange}
