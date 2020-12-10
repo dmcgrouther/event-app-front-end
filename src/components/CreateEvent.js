@@ -122,7 +122,7 @@ class CreateEvent extends Component {
                     <div className="form-group">
                       <label htmlFor="name">Maximum Non-Host Player Count</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" value={this.state.maximumNonHostPlayerCount} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" value={this.state.maximumNonHostPlayerCount} />
                     </div>
                     <div className="form-group">
                       <label htmlFor="name">How The Event Happens</label>
@@ -152,7 +152,7 @@ class CreateEvent extends Component {
                     <div className="form-group">
                       <label htmlFor="name">Estimated Event Length (in hours)</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="eventLengthInHours" name="eventLengthInHours" value={this.state.eventLengthInHours} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="eventLengthInHours" name="eventLengthInHours" value={this.state.eventLengthInHours} />
                     </div>
                     <br />
                     <button className="btn btn-primary float-right call-to-action-button" type="submit">Create Event</button>

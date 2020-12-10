@@ -76,7 +76,7 @@ class EditEventPage extends Component {
             return(
                 <>
                     <h1>You may edit the event information below</h1>
-                    
+
                     <p className="event-date">Event Time and Date</p>
                     <DateAndTimePick 
                         handleDatePickerSubmit={this.handleDatePickerSubmit}
@@ -111,7 +111,7 @@ class EditEventPage extends Component {
                         <div className="form-group">
                         <label htmlFor="name">Maximum Non-Host Player Count</label>
                         <br />
-                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" value={this.state.maximumNonHostPlayerCount} />
+                        <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" value={this.state.maximumNonHostPlayerCount} />
                         </div>
                         <div className="form-group">
                         <label htmlFor="name">How The Event Happens</label>
@@ -141,7 +141,7 @@ class EditEventPage extends Component {
                         <div className="form-group">
                         <label htmlFor="name">Estimated Event Length (in hours)</label>
                         <br />
-                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="eventLengthInHours" name="eventLengthInHours" value={this.state.eventLengthInHours} />
+                        <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="eventLengthInHours" name="eventLengthInHours" value={this.state.eventLengthInHours} />
                         </div>
                         <br />
                         <button className="btn btn-primary float-right call-to-action-button" type="submit">Edit Event</button>
