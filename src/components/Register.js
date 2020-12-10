@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+import './Register.css';
 
 class Register extends Component {
   state = {
@@ -11,6 +12,7 @@ class Register extends Component {
     email: '',
     password: '',
     password2: '',
+    errorMessageVisible: 'hidden',
   };
 
   handleChange = (event) => {
@@ -18,6 +20,12 @@ class Register extends Component {
       [event.target.name]: event.target.value
     });
   };
+
+  somethingWentWrong () {
+    this.setState({
+      errorMessageVisible: 'visible'
+    })
+  }
 
   handleSubmit = (event) => {
     if (this.state.password !== this.state.password2){
@@ -31,7 +39,7 @@ class Register extends Component {
           this.props.setCurrentUser(res.data.data);
           window.location = '/eventlist';
         })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log((error), this.somethingWentWrong()))
     }
   }
 
@@ -64,6 +72,7 @@ class Register extends Component {
               </div>
               <br />
               <button className="btn btn-primary float-right call-to-action-button" type="submit">Register</button>
+              <p className="something-went-wrong" style={{visibility: this.state.errorMessageVisible}}>Something seems to have gone wrong. It might be that this email address is taken already.</p>
             </form>
           </div>
         </div>

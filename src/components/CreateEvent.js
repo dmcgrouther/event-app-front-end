@@ -42,23 +42,29 @@ class CreateEvent extends Component {
     };
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
-      .then((res) => {
-        console.log(res)
-        this.setState({
-          eventsUserIsHosting: this.state.eventsUserIsHosting.concat(res.data.data._id)
+
+    if(!this.state.eventDate){
+      alert("Please enter a time and date for the event. Please try again.")
+      event.preventDefault();
+    } else {
+      event.preventDefault();
+      axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
+        .then((res) => {
+          console.log(res)
+          this.setState({
+            eventsUserIsHosting: this.state.eventsUserIsHosting.concat(res.data.data._id)
+          })
+          axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
+            eventsUserIsHosting: this.state.eventsUserIsHosting
+          })
+          .then((response) => {
+            console.log(response)
+          })
+          .catch((error) => console.log(error))
+          window.location = `/events/${res.data.data._id}`;
         })
-        axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
-          eventsUserIsHosting: this.state.eventsUserIsHosting
-        })
-        .then((response) => {
-          console.log(response)
-        })
-        .catch((error) => console.log(error))
-        window.location = `/events/${res.data.data._id}`;
-      })
-      .catch((err) => console.log(err))
+        .catch((err) => console.log(err))
+    }
   }
     
     handleDatePickerSubmit = (e) => {
@@ -147,7 +153,7 @@ class CreateEvent extends Component {
                     <div className="form-group">
                       <label htmlFor="name">Experience Level</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
                     </div>
                     <div className="form-group">
                       <label htmlFor="name">Estimated Event Length (in hours)</label>

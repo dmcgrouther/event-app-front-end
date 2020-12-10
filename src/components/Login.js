@@ -2,14 +2,18 @@
 // https://git.generalassemb.ly/kbbushman/react-auth/blob/master/src/components/Auth/Login.js
 // uncomment handlesubmit when backendworks
 
+//https://forum.freecodecamp.org/t/react-js-i-need-a-button-color-to-change-onclick-but-cannot-determine-how-to-properly-set-and-change-state-for-that-component/45168/2
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import './Login.css';
 
 class Login extends Component {
   state = {
     email: '',
     password: '',
+    errorMessageVisible: 'hidden',
   };
 
   handleChange = (event) => {
@@ -17,6 +21,12 @@ class Login extends Component {
       [event.target.name]: event.target.value,
     });
   };
+
+  wrongEmailOrPassword () {
+    this.setState({
+      errorMessageVisible: 'visible'
+    })
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -26,7 +36,9 @@ class Login extends Component {
         this.props.setCurrentUser(res.data.data);
         this.props.history.push('/eventlist');
       })
-      .catch((err) => console.log(err));
+      .catch(
+        (err) => (console.log(err), this.wrongEmailOrPassword())
+      );
   }
 
   render() {
@@ -41,15 +53,16 @@ class Login extends Component {
                 <div className="form-group">
                   <label htmlFor="name">Email</label>
                   <br />
-                  <input onChange={this.handleChange} className="form-control form-control-lg" type="email" id="email" name="email" value={this.state.email} />
+                  <input onChange={this.handleChange} className="form-control form-control-lg" type="email" required={true} id="email" name="email" value={this.state.email} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <br />
-                  <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password" name="password" value={this.state.password} />
+                  <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password" name="password" value={this.state.password} />
                 </div>
                 <br />
                 <button className="btn btn-primary float-right call-to-action-button" type="submit">Login</button>
+                <p className="incorrect-email-or-password" style={{visibility: this.state.errorMessageVisible}}>Your username or password was entered incorrectly. Possibly both.</p>
               </form>
             </div>
           </div>

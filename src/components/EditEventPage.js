@@ -61,12 +61,18 @@ class EditEventPage extends Component {
     };
 
     handleSubmit = (event) => {
-        event.preventDefault();
-        axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, this.state)
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => console.log(err))
+
+        if(!this.state.eventDate){
+            alert("Please enter a time and date for the event. Please try again.")
+            event.preventDefault();
+        } else {
+            event.preventDefault();
+            axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, this.state)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => console.log(err))
+        }
     }
 
 
@@ -136,7 +142,7 @@ class EditEventPage extends Component {
                         <div className="form-group">
                         <label htmlFor="name">Experience Level</label>
                         <br />
-                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
+                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
                         </div>
                         <div className="form-group">
                         <label htmlFor="name">Estimated Event Length (in hours)</label>
@@ -164,9 +170,6 @@ class EditEventPage extends Component {
             )
         }
     }
-
-
-
 }
 
 export default EditEventPage;
