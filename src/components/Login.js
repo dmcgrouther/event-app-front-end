@@ -48,20 +48,20 @@ class Login extends Component {
       <div className="container mt-4">
           <div className="row">
             <div className="col-md-4 offset-md-4">
-              <h1 className="mb-3">Login</h1>
+              <h1 className="mb-3 login-header">Login</h1>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
+                <div className="form-group login-form">
                   <label htmlFor="name">Email</label>
                   <br />
                   <input onChange={this.handleChange} className="form-control form-control-lg" type="email" required={true} id="email" name="email" value={this.state.email} />
                 </div>
-                <div className="form-group">
+                <div className="form-group login-form">
                   <label htmlFor="password">Password</label>
                   <br />
                   <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password" name="password" value={this.state.password} />
                 </div>
                 <br />
-                <button className="btn btn-primary float-right call-to-action-button" type="submit">Login</button>
+                <button className="btn btn-primary float-right call-to-action-button login-button" type="submit">Login</button>
                 <p className="incorrect-email-or-password" style={{visibility: this.state.errorMessageVisible}}>Your username or password was entered incorrectly. Possibly both.</p>
               </form>
             </div>

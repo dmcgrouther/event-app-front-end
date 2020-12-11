@@ -20,7 +20,9 @@
     /* border: 3px solid #ddd; */
     border: 3px solid rgb(88, 88, 88);
     /* rgb(88, 88, 88); */
-    width: 100%;
+    /* width: 100%; */
+    width: 98.5%;
+    margin-left: 0.75%;
 }
 
 #events-table td, #events-table th {

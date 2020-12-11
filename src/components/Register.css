@@ -1,3 +1,17 @@
+.register-header{
+    text-align: center;
+}
+
+.register-form{
+    margin-left: 2.5%;
+    margin-top: 0.5%;
+}
+
 .something-went-wrong{
     color: red;
+    margin-left: 2.5%;
+}
+
+.register-button{
+    margin-left: 2.5%;
 }

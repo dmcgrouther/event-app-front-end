@@ -23,7 +23,7 @@ const About = () => {
                 </p>
                 <p className="about__sentence">
                 From here, on the events page the event will be listed in order of when it occurs. The events happening in 
-                the more immediate future will be displayed first
+                the more immediate future will be displayed first.
                 </p>
                 <p className="about__sentence">
                 Click into the respective event to learn more! And if you want to, go ahead and join. 

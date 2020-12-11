@@ -48,30 +48,30 @@ class Register extends Component {
       <div className="container mt-4">
         <div className="row">
           <div className="col-md-4 offset-md-4">
-            <h1 className="mb-3">Register</h1>
+            <h1 className="mb-3 register-header">Register</h1>
             <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
+              <div className="form-group register-form">
                 <label htmlFor="name">Name</label>
                 <br />
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="name" name="name" value={this.state.name} />
               </div>
-              <div className="form-group">
+              <div className="form-group register-form">
                 <label htmlFor="name">Email</label>
                 <br />
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="email" required={true} id="email" name="email" value={this.state.email} />
               </div>
-              <div className="form-group">
+              <div className="form-group register-form">
                 <label htmlFor="name">Password</label>
                 <br />
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password" name="password" value={this.state.password} />
               </div>
-              <div className="form-group">
+              <div className="form-group register-form">
                 <label htmlFor="password2">Confirm Password</label>
                 <br />
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password2" name="password2" value={this.state.password2} />
               </div>
               <br />
-              <button className="btn btn-primary float-right call-to-action-button" type="submit">Register</button>
+              <button className="btn btn-primary float-right call-to-action-button register-button" type="submit">Register</button>
               <p className="something-went-wrong" style={{visibility: this.state.errorMessageVisible}}>Something seems to have gone wrong. It might be that this email address is taken already.</p>
             </form>
           </div>
