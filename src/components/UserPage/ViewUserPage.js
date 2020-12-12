@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './ViewUserPage.css';
 import UsersEventsAsAttendee from './UserEventsAsAttendee';
+import UserEventsAsHost from './UserEventsAsHost';
 //https://gist.github.com/primaryobjects/aacf6fa49823afb2f6ff065790a5b402
 // https://stackoverflow.com/questions/54712518/how-to-render-results-from-axios-function-with-mapping
 
@@ -121,16 +122,17 @@ class ViewUserPage extends Component {
                             ))}
                         </ul> */}
                         <UsersEventsAsAttendee userEventsAsAttendeeToDisplayInfo={this.state.userEventsAsAttendeeToDisplayInfo} />
-                        <h2>Here are your upcoming events as a host.</h2>
+                        {/* <h2>Here are your upcoming events as a host.</h2>
                         <ul>
                             {this.state.userEventsAsHostToDisplayInfo.map((userEventAsHostToDisplayInfo, i) => (
                                 <li key={i} onClick={ () => this.handleClick(userEventAsHostToDisplayInfo.eventHostingObjectId) }>{userEventAsHostToDisplayInfo.eventHostingObjectName} {`${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toLocaleString()} ${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
                             ))}
-                        </ul>
+                        </ul> */}
+                        <UserEventsAsHost userEventsAsHostToDisplayInfo={this.state.userEventsAsHostToDisplayInfo} />
                     </div>
                     <br />
                     <br />
-                    <h4>If you would like to delete your account, you can do so by clicking the button below.</h4>
+                    <p>If you would like to delete your account, you can do so by clicking the button below.</p>
                     <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
                         Delete My Account
                     </button>
