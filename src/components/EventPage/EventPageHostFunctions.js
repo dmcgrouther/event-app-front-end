@@ -154,10 +154,11 @@ class EventPageHostFunctions extends Component {
             return (
                 <>
                     <p>Click <Link to={`/editevent/${window.location.pathname.split('/')[2]}`}>here</Link> to edit this event.</p>
+                    <br />
                     <h2>The event attendees are listed below</h2>
-                    <ul>
+                    <ul className="event-attendee-list">
                         {this.props.usersInEventToDisplayName.map((userInEventToDisplayName, i) => (
-                            <li key={i} onClick={ () => this.handleClick(userInEventToDisplayName.objectId) }>{userInEventToDisplayName.objectUserName}</li>
+                            <li key={i} onClick={ () => this.handleClick(userInEventToDisplayName.objectId) }><span className="event-attendee-text">{userInEventToDisplayName.objectUserName}</span></li>
                         ))}
                     </ul>
     

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import EventInformation from './EventInformation';
 import { Link } from 'react-router-dom';
-import EventPageHostFunctions from './EventPageHostFunctions'
+import EventPageHostFunctions from './EventPageHostFunctions';
+import './EventPage.css';
 
 // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
 
@@ -169,54 +170,66 @@ class EventPage extends Component {
         if(this.props.currentUser === null && this.state.currentNonHostPlayerCount === this.state.maximumNonHostPlayerCount){
             return(
                 <>
-                    <EventInformation />
-                    <h4>Currently the event is full. </h4>
-                    <h4>In order to sign up for this event or others, you must be signed in.</h4>
-                    <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
-                    <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+                    <div className="event-page-info">
+                        <EventInformation />
+                        <h4>Currently the event is full. </h4>
+                        <h4>In order to sign up for this event or others, you must be signed in.</h4>
+                        <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
+                        <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+                    </div>
                 </>
             )
         }else if(this.props.currentUser === null){
             return(
                 <>
-                    <EventInformation />
-                    <h4>In order to sign up for this event or others, you must be signed in.</h4>
-                    <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
-                    <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+                    <div className="event-page-info">
+                        <EventInformation />
+                        <h4>In order to sign up for this event or others, you must be signed in.</h4>
+                        <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
+                        <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+                    </div>
                 </>
             )
         }else if (this.props.currentUser === this.state.hostUser[0]){
             return(
                 <>
-                    <h1>Here is an event you are hosting</h1>
-                    <EventInformation />
-                    <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers} usersInEventToDisplayName={this.state.usersInEventToDisplayName} eventsUserIsHosting={this.state.eventsUserIsHosting} currentUser={this.props.currentUser} usersEventsAsAttendee={this.state.usersEventsAsAttendee}/>
+                    <div className="event-page-info">
+                        <h1>Here is an event you are hosting</h1>
+                        <EventInformation />
+                        <EventPageHostFunctions nonHostUsers={this.state.nonHostUsers} usersInEventToDisplayName={this.state.usersInEventToDisplayName} eventsUserIsHosting={this.state.eventsUserIsHosting} currentUser={this.props.currentUser} usersEventsAsAttendee={this.state.usersEventsAsAttendee}/>
+                    </div>
                 </>
             )
         } else if(this.state.nonHostUsers.includes(this.props.currentUser)){
             return(
                 <>
-                    <h1>You are registered for this event</h1>
-                    <EventInformation />
-                    <button onClick={this.handleRemoveCurrentUserFromEventClick}>Click here to un-register for the event</button>
-                    <p>If you have questions, you can reach out to the host for this event.</p>
-                    <p>Link to the event host's user page <Link to={`/users/${this.state.hostUser[0]}`}>here</Link>.</p>
+                    <div className="event-page-info">
+                        <h1>You are registered for this event</h1>
+                        <EventInformation />
+                        <button className="call-to-action-button" onClick={this.handleRemoveCurrentUserFromEventClick}>Click to unjoin</button>
+                        <p>If you have questions, you can reach out to the host for this event.</p>
+                        <p>Link to the event host's user page <Link to={`/users/${this.state.hostUser[0]}`}>here</Link>.</p>
+                    </div>
                 </>
             )
         }else if(this.props.currentUser !== null && this.state.nonHostUsers.includes(this.props.currentUser) === false && this.state.currentNonHostPlayerCount === this.state.maximumNonHostPlayerCount){
             return(
                 <>
-                    <EventInformation />
-                    <h4>Currently the event is full. </h4>
-                    <p>If you have questions, <Link to={`/users/${this.state.hostUser[0]}`}>here</Link> is a link to the hosts user page to get their contact info.</p>
+                    <div className="event-page-info">
+                        <EventInformation />
+                        <h4>Currently the event is full. </h4>
+                        <p>If you have questions, <Link to={`/users/${this.state.hostUser[0]}`}>here</Link> is a link to the hosts user page to get their contact info.</p>
+                    </div>
                 </>
             )
         } else {
             return (
                 <>
-                    <EventInformation />
-                    <button onClick={this.handleJoinEventClick}>Click here to join</button>
-                    <p>If you have questions, <Link to={`/users/${this.state.hostUser[0]}`}>here</Link> is a link to the hosts user page to get their contact info.</p>
+                    <div className="event-page-info">
+                        <EventInformation />
+                        <button className="call-to-action-button" onClick={this.handleJoinEventClick}>Click to join</button>
+                        <p>If you have questions, <Link to={`/users/${this.state.hostUser[0]}`}>here</Link> is a link to the hosts user page to get their contact info.</p>
+                    </div>
                 </>
             )
         }

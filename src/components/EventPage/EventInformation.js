@@ -81,16 +81,14 @@ class EventInformation extends Component {
                         Type Of Event Activity: {this.state.typeOfEventActivity}
                     </div>
                     <div>
-                        Event Description: {this.state.eventDescription}
-                    </div>
-                    <div>
                         Estimated Game length (in hours): {this.state.eventLengthInHours}
                     </div>
                     <div>
                         Number of players besides host: {this.state.currentNonHostPlayerCount}
                     </div>
-    
-                    {/* <button onClick={this.handleJoinEventClick}>Click here to join</button> */}
+                    <div>
+                        Event Description: {this.state.eventDescription}
+                    </div>
                 </>
         )
     }

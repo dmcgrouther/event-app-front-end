@@ -1,0 +1,14 @@
+.event-page-info{
+    margin-left: 2.5%;
+}
+
+.event-attendee-list{
+    padding: 0;
+    list-style-type: none;
+    margin-left: auto;
+}
+
+.event-attendee-text:hover {
+    background-color: rgb(235, 235, 235);
+    transition: 500ms;
+}
