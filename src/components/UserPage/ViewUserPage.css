@@ -1,4 +1,18 @@
+/* https://www.w3schools.com/html/tryit.asp?filename=tryhtml_lists_unordered_none
+https://stackoverflow.com/questions/14310154/how-do-i-set-a-background-color-for-the-width-of-text-not-the-width-of-the-enti */
+
 .view-user-info {
     margin-left: 2.5%;
     margin-top: 2.5%;
+}
+
+.user-page-list{
+    padding: 0;
+    list-style-type: none;
+    margin-left: auto;
+}
+
+.user-page-list-item-text:hover {
+    background-color: rgb(235, 235, 235);
+    transition: 500ms;
 }

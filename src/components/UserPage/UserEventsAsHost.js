@@ -26,11 +26,11 @@ class UserEventsAsHost extends Component {
             return(
                 <>
                     <h2>Here are your events as a host.</h2>
-                    <ul>
+                    <ul className="user-page-list">
                             {this.props.userEventsAsHostToDisplayInfo.map((userEventsAsHostToDisplayInfo, i) => (
-                                <li key={i} onClick={ () => this.handleClick(userEventsAsHostToDisplayInfo.eventHostingObjectId) }>{userEventsAsHostToDisplayInfo.eventHostingObjectName} {`${new Date(userEventsAsHostToDisplayInfo.eventHostingObjectDate).toLocaleString()} ${new Date(userEventsAsHostToDisplayInfo.eventHostingObjectDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
+                                <li key={i} onClick={ () => this.handleClick(userEventsAsHostToDisplayInfo.eventHostingObjectId) }><span className="user-page-list-item-text"> {userEventsAsHostToDisplayInfo.eventHostingObjectName} {`${new Date(userEventsAsHostToDisplayInfo.eventHostingObjectDate).toLocaleString()} ${new Date(userEventsAsHostToDisplayInfo.eventHostingObjectDate).toTimeString().split(' ').slice(2).join(" ")}`} </span></li>
                             ))}
-                        </ul>
+                    </ul>
                 </>
             )
         }

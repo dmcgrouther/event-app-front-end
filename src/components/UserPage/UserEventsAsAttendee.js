@@ -15,7 +15,6 @@ class UserEventsAsAttendee extends Component {
     }
 
     render(){
-        
         if(this.props.userEventsAsAttendeeToDisplayInfo.length < 1){
             return(
                 <>
@@ -26,15 +25,12 @@ class UserEventsAsAttendee extends Component {
             { this.organizeEventsAsAttendeeByDate() }
             return(
                 <>
-                    <div>
-                        <h2>Here are your events as an attendee.</h2>
-                        <ul>
-                            {this.props.userEventsAsAttendeeToDisplayInfo.map((userEventAsAttendeeToDisplayInfo, i) => (
-                                // <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} {userEventAsAttendeeToDisplayInfo.objectEventDate}</li>
-                                <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} {`${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toLocaleString()} ${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <h2>Here are your events as an attendee.</h2>
+                    <ul className="user-page-list">
+                        {this.props.userEventsAsAttendeeToDisplayInfo.map((userEventAsAttendeeToDisplayInfo, i) => (
+                            <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }> <span className="user-page-list-item-text">{userEventAsAttendeeToDisplayInfo.objectEventName} {`${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toLocaleString()} ${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toTimeString().split(' ').slice(2).join(" ")}`} </span></li>
+                        ))}
+                    </ul>
                 </>
             )
         }

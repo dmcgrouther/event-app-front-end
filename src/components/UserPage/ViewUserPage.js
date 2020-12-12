@@ -128,6 +128,7 @@ class ViewUserPage extends Component {
                                 <li key={i} onClick={ () => this.handleClick(userEventAsHostToDisplayInfo.eventHostingObjectId) }>{userEventAsHostToDisplayInfo.eventHostingObjectName} {`${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toLocaleString()} ${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
                             ))}
                         </ul> */}
+                        <br />
                         <UserEventsAsHost userEventsAsHostToDisplayInfo={this.state.userEventsAsHostToDisplayInfo} />
                     </div>
                     <br />
