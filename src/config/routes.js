@@ -7,9 +7,9 @@ import Register from '../components/Register';
 import Login from '../components/Login';
 import CreateEvent from '../components/CreateEvent';
 import EventPage from '../components/EventPage/EventPage';
-import ViewUserPage from '../components/ViewUserPage';
+import ViewUserPage from '../components/UserPage/ViewUserPage';
+import EditUserPage from '../components/UserPage/EditUserPage';
 import AccountDeleted from '../components/AccountDeleted';
-import EditUserPage from '../components/EditUserPage';
 import EditEventPage from '../components/EditEventPage';
 
 export default ({ currentUser, setCurrentUser }) => (
