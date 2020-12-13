@@ -83,9 +83,11 @@ class CreateEvent extends Component {
         if(this.props.currentUser === null){
           return(
             <>
-              <h2>In order to create an event you need to be registered and signed in.</h2>
-              <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
-              <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+              <div className="create-event-not-logged-in">
+                <h2>In order to create an event you need to be registered and signed in.</h2>
+                <p>Click <Link to={'/Login'}>here</Link> to login to your account.</p>
+                <p>Don't have an account? Click <Link to={'/Register'}>here</Link> to create an account.</p>
+              </div>
             </>
           )
         } else {
