@@ -10,9 +10,8 @@ class EditUserPage extends Component {
             name: '',
             contactInfo: '',
         }
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleContactInfoChange = this.handleContactInfoChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount () {
         axios.get(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
@@ -24,15 +23,11 @@ class EditUserPage extends Component {
         })
     }
 
-    handleNameChange(event){
-        this.setState({name: event.target.value})
-        console.log(this.state.name)
-    }
-
-    handleContactInfoChange(event){
-        this.setState({contactInfo: event.target.value})
-        console.log(this.state.contactInfo)
-    }
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+    };
     
     handleSubmit(event){
         event.preventDefault();
@@ -59,24 +54,17 @@ class EditUserPage extends Component {
                             <label>
                                 User Name:
                                 <br />
-                                <input type="text" value={this.state.name} maxLength="40" required={true} onChange={this.handleNameChange} />
+                                <input onChange={this.handleChange} id="name" name="name" type="text" value={this.state.name} maxLength="40" required={true} />
                             </label>
                         </div>
-                        {/* <label className="edit-user-field">
-                            User Name:
-                            <br />
-                            <input type="text" value={this.state.name} required={true} onChange={this.handleNameChange} />
-                        </label>
-                        <br /> */}
                         <div className="edit-user-field">
                             <label>
                                 Contact Info:
                                 <br />
-                                <input type="text" value={this.state.contactInfo} maxLength="80" onChange={this.handleContactInfoChange} />
+                                <input onChange={this.handleChange} id="contactInfo" name="contactInfo" type="text" value={this.state.contactInfo} maxLength="80" />
                             </label>
                         </div>
                         <br />
-                        {/* <input type="submit" value="Save Changes" /> */}
                         <button className="btn btn-primary float-right call-to-action-button" type="submit">Save Changes</button>
                         </form>
                         <p>Click <Link to={`/users/${window.location.pathname.split('/')[2]}`}>here</Link> to return to your account info page.</p>
