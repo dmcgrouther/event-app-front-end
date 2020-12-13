@@ -113,47 +113,47 @@ class CreateEvent extends Component {
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Event Name</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="eventName" name="eventName" value={this.state.eventName} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="eventName" name="eventName" maxLength="40" value={this.state.eventName} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Game System</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="gameSystem" name="gameSystem" value={this.state.gameSystem} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="gameSystem" name="gameSystem" maxLength="30"  value={this.state.gameSystem} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Game Edition</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="gameEdition" name="gameEdition" value={this.state.gameEdition} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="gameEdition" name="gameEdition" maxLength="25"  value={this.state.gameEdition} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Maximum Non-Host Player Count</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" value={this.state.maximumNonHostPlayerCount} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" maxLength="3" value={this.state.maximumNonHostPlayerCount} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">How The Event Happens</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="howTheEventHappens" name="howTheEventHappens" value={this.state.howTheEventHappens} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="howTheEventHappens" name="howTheEventHappens" maxLength="40" value={this.state.howTheEventHappens} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Meetup Gathering Info</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="meetupGatheringInfo" name="meetupGatheringInfo" value={this.state.meetupGatheringInfo} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="meetupGatheringInfo" name="meetupGatheringInfo" maxLength="100" value={this.state.meetupGatheringInfo} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Type Of Event Activity</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="typeOfEventActivity" name="typeOfEventActivity" value={this.state.typeOfEventActivity} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="typeOfEventActivity" name="typeOfEventActivity" maxLength="40" value={this.state.typeOfEventActivity} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Experience Level</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="experienceLevel" name="experienceLevel" value={this.state.experienceLevel} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="experienceLevel" name="experienceLevel" maxLength="40" value={this.state.experienceLevel} />
                     </div>
                     <div className="form-group create-event-field">
                       <label htmlFor="name">Estimated Event Length (in hours)</label>
                       <br />
-                      <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="eventLengthInHours" name="eventLengthInHours" value={this.state.eventLengthInHours} />
+                      <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="eventLengthInHours" name="eventLengthInHours" maxLength="2" value={this.state.eventLengthInHours} />
                     </div>
                     {/* <div className="form-group create-event-field">
                       <label htmlFor="name">Event Description</label>
@@ -163,7 +163,7 @@ class CreateEvent extends Component {
 
                     <div className="create-event-field">
                       <p className="event-description-text-above-textarea">Event Description</p>
-                      <textarea onChange={this.handleChange} className="form-control form-control-lg event-description" type="text" required={true} name="eventDescription" value={this.state.eventDescription} />
+                      <textarea onChange={this.handleChange} className="form-control form-control-lg event-description" type="text" required={true} name="eventDescription" maxLength="1500" value={this.state.eventDescription} />
                     </div>
                     <br />
                     <button className="btn btn-primary float-right call-to-action-button" type="submit">Create Event</button>

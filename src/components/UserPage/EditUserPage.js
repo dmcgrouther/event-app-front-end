@@ -59,7 +59,7 @@ class EditUserPage extends Component {
                             <label>
                                 User Name:
                                 <br />
-                                <input type="text" value={this.state.name} required={true} onChange={this.handleNameChange} />
+                                <input type="text" value={this.state.name} maxLength="40" required={true} onChange={this.handleNameChange} />
                             </label>
                         </div>
                         {/* <label className="edit-user-field">
@@ -72,7 +72,7 @@ class EditUserPage extends Component {
                             <label>
                                 Contact Info:
                                 <br />
-                                <input type="text" value={this.state.contactInfo} onChange={this.handleContactInfoChange} />
+                                <input type="text" value={this.state.contactInfo} maxLength="80" onChange={this.handleContactInfoChange} />
                             </label>
                         </div>
                         <br />

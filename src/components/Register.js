@@ -53,22 +53,22 @@ class Register extends Component {
               <div className="form-group register-form">
                 <label htmlFor="name">Name</label>
                 <br />
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="name" name="name" value={this.state.name} />
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="name" name="name" maxLength="40" value={this.state.name} />
               </div>
               <div className="form-group register-form">
                 <label htmlFor="name">Email</label>
                 <br />
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="email" required={true} id="email" name="email" value={this.state.email} />
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="email" required={true} id="email" name="email" maxLength="40" value={this.state.email} />
               </div>
               <div className="form-group register-form">
                 <label htmlFor="name">Password</label>
                 <br />
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password" name="password" value={this.state.password} />
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password" name="password" maxLength="40" value={this.state.password} />
               </div>
               <div className="form-group register-form">
                 <label htmlFor="password2">Confirm Password</label>
                 <br />
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password2" name="password2" value={this.state.password2} />
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" required={true} id="password2" name="password2" maxLength="40" value={this.state.password2} />
               </div>
               <br />
               <button className="btn btn-primary float-right call-to-action-button register-button" type="submit">Register</button>
