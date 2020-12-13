@@ -9,23 +9,14 @@ class EditEventPage extends Component {
         super(props)
         this.state = {
             eventName: '',
-            // gameSystem: '',
             additionalInfo1: '',
-
-            // gameEdition: '',
             additionalInfo2: '',
-
             eventDate: '',
             maximumNonHostPlayerCount: '',
-
-            // howTheEventHappens: 'Virtual', //going to have all events be listed as virtual for now.
             eventMeetupType: 'Virtual', //going to have all events be listed as virtual for now.
-
             meetupGatheringInfo: '',
             typeOfEventActivity: '',
-
             eventFamilyArchetype: 'Tabletop game',
-
             eventDescription: '',
             experienceLevel: '',
             eventLengthInHours: '',
@@ -39,23 +30,14 @@ class EditEventPage extends Component {
         .then((res) => {
             this.setState({
                 eventName: res.data.data.eventName,
-                
-                // gameSystem: res.data.data.gameSystem,
                 additionalInfo1: res.data.data.additionalInfo1,
-                // gameEdition: res.data.data.gameEdition,
                 additionalInfo2: res.data.data.additionalInfo2,
-
                 eventDate: res.data.data.eventDate,
                 maximumNonHostPlayerCount: res.data.data.maximumNonHostPlayerCount,
-
-                // howTheEventHappens: 'Virtual', //keep this set to virtual
                 eventMeetupType: 'Virtual', //keep this set to virtual
-
                 meetupGatheringInfo: res.data.data.meetupGatheringInfo,
                 typeOfEventActivity: res.data.data.typeOfEventActivity,
-
                 eventFamilyArchetype: 'Tabletop game', //keep it set to this value.
-
                 eventDescription: res.data.data.eventDescription,
                 experienceLevel: res.data.data.experienceLevel,
                 eventLengthInHours: res.data.data.eventLengthInHours,
@@ -116,24 +98,11 @@ class EditEventPage extends Component {
                                 <br />
                                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="eventName" name="eventName" maxLength="40" value={this.state.eventName} />
                             </div>
-
-                            {/* <div className="form-group edit-event-field">
-                                <label htmlFor="name">Game System</label>
-                                <br />
-                                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="gameSystem" name="gameSystem" maxLength="30" value={this.state.gameSystem} />
-                            </div> */}
                             <div className="form-group edit-event-field">
                                 <label htmlFor="name">Game System</label>
                                 <br />
                                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="additionalInfo1" name="additionalInfo1" maxLength="30" value={this.state.additionalInfo1} />
                             </div>
-
-
-                            {/* <div className="form-group edit-event-field">
-                                <label htmlFor="name">Game Edition</label>
-                                <br />
-                                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="gameEdition" name="gameEdition" maxLength="25" value={this.state.gameEdition} />
-                            </div> */}
                             <div className="form-group edit-event-field">
                                 <label htmlFor="name">Game Edition</label>
                                 <br />
@@ -145,18 +114,11 @@ class EditEventPage extends Component {
                                 <br />
                                 <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" maxLength="3" value={this.state.maximumNonHostPlayerCount} />
                             </div>
-
-                            {/* <div className="form-group edit-event-field">
-                                <label htmlFor="name">How The Event Happens</label>
-                                <br />
-                                <input className="form-control form-control-lg" type="text" required={true} id="howTheEventHappens" name="howTheEventHappens" maxLength="40" value={this.state.howTheEventHappens} />
-                            </div> */}
                             <div className="form-group edit-event-field">
                                 <label htmlFor="name">Meetup Type</label>
                                 <br />
                                 <input readOnly className="form-control form-control-lg" type="text" required={true} id="eventMeetupType" name="eventMeetupType" maxLength="40" value={this.state.eventMeetupType} />
                             </div>
-
                             <div className="form-group edit-event-field">
                                 <label htmlFor="name">Meetup Gathering Info</label>
                                 <br />

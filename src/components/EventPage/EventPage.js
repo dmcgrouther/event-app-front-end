@@ -13,23 +13,14 @@ class EventPage extends Component {
         super(props);
         this.state = {
             eventName: '',
-            // gameSystem: '',
             additionalInfo1: '',
-
-            // gameEdition: '',
             additionalInfo2: '',
-
             eventDate: '',
             maximumNonHostPlayerCount: '',
-
-            // howTheEventHappens: 'Virtual', //going to have all events be listed as virtual for now.
             eventMeetupType: 'Virtual', //going to have all events be listed as virtual for now.
-
             meetupGatheringInfo: '',
             typeOfEventActivity: '',
-
             eventFamilyArchetype: 'Tabletop game',
-
             eventDescription: '',
             experienceLevel: '',
             eventLengthInHours: '',
@@ -74,24 +65,14 @@ class EventPage extends Component {
             .then((res) => {
               this.setState({
                   eventName: res.data.data.eventName,
-
-                //   gameSystem: res.data.data.gameSystem,
                   additionalInfo1: res.data.data.additionalInfo1,
-
-                //   gameEdition: res.data.data.gameEdition,
                   additionalInfo2: res.data.data.additionalInfo2,
-
                   eventDate: res.data.data.eventDate,
                   maximumNonHostPlayerCount: res.data.data.maximumNonHostPlayerCount,
-
-                  //   howTheEventHappens: 'Virtual', //keep this set to virtual
                   eventMeetupType: 'Virtual', //keep this set to virtual
-                  
                   meetupGatheringInfo: res.data.data.meetupGatheringInfo,
                   typeOfEventActivity: res.data.data.typeOfEventActivity,
-
                   eventFamilyArchetype: 'Tabletop game', //keep it set to this value.
-
                   eventDescription: res.data.data.eventDescription,
                   experienceLevel: res.data.data.experienceLevel,
                   eventLengthInHours: res.data.data.eventLengthInHours,

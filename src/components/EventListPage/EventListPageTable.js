@@ -46,7 +46,6 @@ class EventListPageTable extends Component {
         return sortedEventsByDate.map((event, index) => {
         // return this.state.events.map((event, index) => {
 
-            // const { eventName, gameSystem, howTheEventHappens, eventDate, maximumNonHostPlayerCount, currentNonHostPlayerCount , experienceLevel} = event
             const { eventName, additionalInfo1, eventMeetupType, eventDate, maximumNonHostPlayerCount, currentNonHostPlayerCount , experienceLevel} = event
 
             let dateAndTimeRightNow = new Date();
@@ -61,13 +60,8 @@ class EventListPageTable extends Component {
                     {/* <td><span onClick={ () => this.handleClick(event._id) }>{eventName}</span></td> */}
                     {/* <td><Link to={`/events/${event._id}`}>{eventName}</Link></td> */}
                     <td>{eventName}</td>
-
-                    {/* <td>{gameSystem}</td> */}
                     <td>{additionalInfo1}</td>
-
-                    {/* <td>{howTheEventHappens}</td> */}
                     <td>{eventMeetupType}</td>
-
                     <td>{`${new Date(eventDate).toLocaleString()} ${new Date(eventDate).toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]}`}</td>
                     <td>{currentNonHostPlayerCount || 0 } of {maximumNonHostPlayerCount}</td>
                     <td>{experienceLevel}</td>
