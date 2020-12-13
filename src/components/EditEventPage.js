@@ -154,8 +154,10 @@ class EditEventPage extends Component {
             // window.location = '/'
             return(
                 <>
-                    <h1>This is not an event you can edit</h1>
-                    <p>Click <Link to={`/users/${this.props.currentUser}`}>here</Link> to view the events you are hosting.</p>
+                    <div className="you-cannot-edit-this-event">
+                        <h1>This is not an event you can edit</h1>
+                        <p>Click <Link to={`/users/${this.props.currentUser}`}>here</Link> to view the events you are hosting.</p>
+                    </div>
                 </>
             )
         }
