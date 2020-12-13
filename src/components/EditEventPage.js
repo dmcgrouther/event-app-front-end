@@ -13,7 +13,8 @@ class EditEventPage extends Component {
             gameEdition: '',
             eventDate: '',
             maximumNonHostPlayerCount: '',
-            howTheEventHappens: '',
+            // howTheEventHappens: '', going to have all events be listed as virtual for now.
+            howTheEventHappens: 'Virtual',
             meetupGatheringInfo: '',
             typeOfEventActivity: '',
             eventDescription: '',
@@ -33,7 +34,8 @@ class EditEventPage extends Component {
                 gameEdition: res.data.data.gameEdition,
                 eventDate: res.data.data.eventDate,
                 maximumNonHostPlayerCount: res.data.data.maximumNonHostPlayerCount,
-                howTheEventHappens: res.data.data.howTheEventHappens,
+                // howTheEventHappens: res.data.data.howTheEventHappens,
+                howTheEventHappens: 'Virtual',
                 meetupGatheringInfo: res.data.data.meetupGatheringInfo,
                 typeOfEventActivity: res.data.data.typeOfEventActivity,
                 eventDescription: res.data.data.eventDescription,
@@ -120,10 +122,15 @@ class EditEventPage extends Component {
                                 <br />
                                 <input onChange={this.handleChange} className="form-control form-control-lg" type="number" required={true} id="maximumNonHostPlayerCount" name="maximumNonHostPlayerCount" maxLength="3" value={this.state.maximumNonHostPlayerCount} />
                             </div>
-                            <div className="form-group edit-event-field">
+                            {/* <div className="form-group edit-event-field">
                                 <label htmlFor="name">How The Event Happens</label>
                                 <br />
                                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" required={true} id="howTheEventHappens" name="howTheEventHappens" maxLength="40" value={this.state.howTheEventHappens} />
+                            </div> */}
+                            <div className="form-group edit-event-field">
+                                <label htmlFor="name">How The Event Happens</label>
+                                <br />
+                                <input className="form-control form-control-lg" type="text" required={true} id="howTheEventHappens" name="howTheEventHappens" maxLength="40" value={this.state.howTheEventHappens} />
                             </div>
                             <div className="form-group edit-event-field">
                                 <label htmlFor="name">Meetup Gathering Info</label>
