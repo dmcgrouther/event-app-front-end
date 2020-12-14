@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import './EventListPage.css';
 
 class EventListPage extends Component {
-    constructor(props){
-        super(props);
-    }
     render(){
         if(this.props.currentUser === null){
             return(

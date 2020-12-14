@@ -22,7 +22,7 @@ class UserEventsAsAttendee extends Component {
                 </>
             )
         } else {
-            { this.organizeEventsAsAttendeeByDate() }
+            this.organizeEventsAsAttendeeByDate()
             return(
                 <>
                     <h2>Here are your events as an attendee.</h2>

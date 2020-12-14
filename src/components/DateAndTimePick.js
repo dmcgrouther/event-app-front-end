@@ -6,11 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 class DateAndTimePick extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-
     render() {
         return (
             <form onSubmit={ this.props.handleDatePickerSubmit }>

@@ -36,8 +36,10 @@ class Login extends Component {
         this.props.setCurrentUser(res.data.data);
         this.props.history.push('/eventlist');
       })
-      .catch(
-        (err) => (console.log(err), this.wrongEmailOrPassword())
+      .catch((err) => {
+          console.log(err)
+          this.wrongEmailOrPassword()
+        }
       );
   }
 

@@ -22,7 +22,7 @@ class UserEventsAsHost extends Component {
                 </>
             )
         } else {
-            { this.organizeEventsAsHostByDate() }
+            this.organizeEventsAsHostByDate()
             return(
                 <>
                     <h2>Here are your events as a host.</h2>
