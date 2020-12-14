@@ -53,20 +53,35 @@ class EventListPageTable extends Component {
 
             // console.log(`event is ${eventDateToCompare.getTime()} dateAndTimeRightNow is ${dateAndTimeRightNow.getTime()}`)
             
-            if(eventDateToCompare.getTime() > dateAndTimeRightNow.getTime() ) return (
+            // if(eventDateToCompare.getTime() > dateAndTimeRightNow.getTime() ) return (
                 
-                <tr className="event" key={event._id} onClick={ () => this.handleClick(event._id) }>
-                    {/* <td><span onClick={this.handleClick(event._id)}>{eventName}</span></td> */}
-                    {/* <td><span onClick={ () => this.handleClick(event._id) }>{eventName}</span></td> */}
-                    {/* <td><Link to={`/events/${event._id}`}>{eventName}</Link></td> */}
-                    <td>{eventName}</td>
-                    <td>{additionalInfo1}</td>
-                    <td>{eventMeetupType}</td>
-                    <td>{`${new Date(eventDate).toLocaleString()} ${new Date(eventDate).toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]}`}</td>
-                    <td>{currentNonHostPlayerCount || 0 } of {maximumNonHostPlayerCount}</td>
-                    <td>{experienceLevel}</td>
-                </tr>
-            )
+            //     <tr className="event" key={event._id} onClick={ () => this.handleClick(event._id) }>
+            //         {/* <td><span onClick={this.handleClick(event._id)}>{eventName}</span></td> */}
+            //         {/* <td><span onClick={ () => this.handleClick(event._id) }>{eventName}</span></td> */}
+            //         {/* <td><Link to={`/events/${event._id}`}>{eventName}</Link></td> */}
+            //         <td>{eventName}</td>
+            //         <td>{additionalInfo1}</td>
+            //         <td>{eventMeetupType}</td>
+            //         <td>{`${new Date(eventDate).toLocaleString()} ${new Date(eventDate).toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]}`}</td>
+            //         <td>{currentNonHostPlayerCount || 0 } of {maximumNonHostPlayerCount}</td>
+            //         <td>{experienceLevel}</td>
+            //     </tr>
+            // )
+
+            if(eventDateToCompare.getTime() > dateAndTimeRightNow.getTime()){
+                return(
+                    <tr className="event" key={event._id} onClick={ () => this.handleClick(event._id) }>
+                        <td>{eventName}</td>
+                        <td>{additionalInfo1}</td>
+                        <td>{eventMeetupType}</td>
+                        <td>{`${new Date(eventDate).toLocaleString()} ${new Date(eventDate).toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]}`}</td>
+                        <td>{currentNonHostPlayerCount || 0 } of {maximumNonHostPlayerCount}</td>
+                        <td>{experienceLevel}</td>
+                    </tr>
+                )
+            } else {
+                return null
+            }
         })
     }
 
