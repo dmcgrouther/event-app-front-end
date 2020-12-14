@@ -40,7 +40,7 @@ class EventPage extends Component {
 
     getUsersInEventNames () {
         console.log(`getUsersInEventNames activated.`)
-        this.state.nonHostUsers.map((nonHostUser) => {
+        this.state.nonHostUsers.forEach((nonHostUser) => {
             console.log(nonHostUser)
             axios.get(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`)
             .then(res => {

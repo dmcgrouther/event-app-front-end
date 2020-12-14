@@ -27,7 +27,7 @@ class ViewUserPage extends Component {
     }
 
     getUsersEventsNamesAsAttendee () {
-        this.state.usersEventsAsAttendee.map((usersEventAsAttendee) => {
+        this.state.usersEventsAsAttendee.forEach((usersEventAsAttendee) => {
             console.log(usersEventAsAttendee)
             axios.get(`${process.env.REACT_APP_API_URL}/events/${usersEventAsAttendee}`)
             .then(res => {
@@ -48,7 +48,7 @@ class ViewUserPage extends Component {
     }
 
     getUsersEventsNamesAsHost () {
-        this.state.eventsUserIsHosting.map((eventUserIsHosting) => {
+        this.state.eventsUserIsHosting.forEach((eventUserIsHosting) => {
             console.log(eventUserIsHosting)
             axios.get(`${process.env.REACT_APP_API_URL}/events/${eventUserIsHosting}`)
             .then(res => {
