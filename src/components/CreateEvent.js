@@ -31,9 +31,10 @@ class CreateEvent extends Component {
         this.setState({
           eventsUserIsHosting: res.data.data.eventsUserIsHosting
         })
-        console.log(res)
+        // console.log(res)
       })
-      .catch((err) => console.log(err))
+      // .catch((err) => console.log(err))
+      .catch((err) => err)
     }
 
     handleChange = (event) => {
@@ -51,7 +52,7 @@ class CreateEvent extends Component {
       event.preventDefault();
       axios.post(`${process.env.REACT_APP_API_URL}/events`, this.state)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.setState({
             eventsUserIsHosting: this.state.eventsUserIsHosting.concat(res.data.data._id)
           })
@@ -59,18 +60,19 @@ class CreateEvent extends Component {
             eventsUserIsHosting: this.state.eventsUserIsHosting
           })
           .then((response) => {
-            console.log(response)
+            // console.log(response)
           })
           .catch((error) => console.log(error))
           window.location = `/events/${res.data.data._id}`;
         })
-        .catch((err) => console.log(err))
+        // .catch((err) => console.log(err))
+        .catch((err) => err)
     }
   }
     
     handleDatePickerSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state.eventDate)
+      // console.log(this.state.eventDate)
     }
 
     handleDatePickerChange = (date) => {

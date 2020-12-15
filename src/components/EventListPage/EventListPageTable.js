@@ -11,7 +11,7 @@ class EventListPageTable extends Component {
     }
 
     handleClick(e) {
-        console.log(e)
+        // console.log(e)
         window.location.href = `events/${e}` //this takes the page you are on to the event
         // window.open(`http://localhost:3000/events/${e}`, '_blank') //this creates a new tab and links there
     }
@@ -22,10 +22,11 @@ class EventListPageTable extends Component {
           this.setState({
               events: res.data.data
           })
-          console.log('here')
-          console.log(res.data.data)
+        //   console.log('here')
+        //   console.log(res.data.data)
         })
-        .catch((err) => console.log(err));
+        .catch((error) => error)
+        // .catch((err) => console.log(err));
     }
         
     renderTableHeader() {

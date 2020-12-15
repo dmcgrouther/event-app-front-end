@@ -27,28 +27,28 @@ class EventPageHostFunctions extends Component {
     // }
 
     handleClick(e){
-        console.log(e)
+        // console.log(e)
         window.location = `/users/${e}`
     }
     
     deleteThisEvent(){
-        console.log('deleteth thee!')
+        // console.log('deleteth thee!')
 
-        console.log(this.props.eventsUserIsHosting)
+        // console.log(this.props.eventsUserIsHosting)
         let index = this.props.eventsUserIsHosting.indexOf(`${window.location.pathname.split('/')[2]}`)
         let newEventsUserIsHosting = this.props.eventsUserIsHosting;
-        console.log(`newEventsUserIsHosting is ${newEventsUserIsHosting}`)
+        // console.log(`newEventsUserIsHosting is ${newEventsUserIsHosting}`)
         if(index > -1){
             newEventsUserIsHosting.splice(index, 1)
         }
-        console.log(`newEventsUserIsHosting is below`)
-        console.log(newEventsUserIsHosting)
+        // console.log(`newEventsUserIsHosting is below`)
+        // console.log(newEventsUserIsHosting)
 
-        console.log(`index is ${index}`)
+        // console.log(`index is ${index}`)
 
         axios.delete(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`)
         .then(res => {
-            console.log(res)
+            // console.log(res)
             this.setState({
                 eventsUserIsHosting: newEventsUserIsHosting,
             })
@@ -56,30 +56,32 @@ class EventPageHostFunctions extends Component {
             axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
                 eventsUserIsHosting: this.state.eventsUserIsHosting 
             })
-            .then((response) => {
-                console.log(response)
-            })
-            .catch((error) => console.log(error))
+            .then((response) => response)
+            .catch((error) => error)
+            // .then((response) => {
+            //     console.log(response)
+            // })
+            // .catch((error) => console.log(error))
 
             //before this. do get request for each attendee? update state of with that attendees list? and then edit?
             
             this.props.nonHostUsers.forEach(nonHostUser => {
-                console.log(`nonhostuser is ${nonHostUser}`)
+                // console.log(`nonhostuser is ${nonHostUser}`)
                 axios.get(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`)
                 .then((res) => {
-                    console.log(res)
+                    // console.log(res)
                     this.setState({
                         usersEventsAsAttendee: res.data.data.usersEventsAsAttendee,
                     })
                     
 
-                    console.log(`nonHostUser is ${nonHostUser}`)
-                    console.log('state below')
-                    console.log(this.state)
+                    // console.log(`nonHostUser is ${nonHostUser}`)
+                    // console.log('state below')
+                    // console.log(this.state)
     
-                    console.log('check below')
-                    console.log(this.state)
-                    console.log(this.state.usersEventsAsAttendee)
+                    // console.log('check below')
+                    // console.log(this.state)
+                    // console.log(this.state.usersEventsAsAttendee)
                     let newIndex = this.state.usersEventsAsAttendee.indexOf(`${window.location.pathname.split('/')[2]}`);
                     let newUsersEventsAsAttendee = this.state.usersEventsAsAttendee;
                     if(newIndex > -1){
@@ -93,14 +95,17 @@ class EventPageHostFunctions extends Component {
                     axios.put(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`, {
                         usersEventsAsAttendee: this.state.usersEventsAsAttendee
                     })
-                    .then((response) => {
-                        console.log(response)
-                    })
-                    .catch((error) => console.log(error))
+                    // .then((response) => {
+                    //     console.log(response)
+                    // })
+                    // .catch((error) => console.log(error))
+                    .then((response) => response)
+                    .catch((error) => error)
 
 
                 })
-                .catch((error) => console.log(error))
+                // .catch((error) => console.log(error))
+                .catch((error) => error)
 
                 // console.log(`nonHostUser is ${nonHostUser}`)
                 // console.log('state below')
@@ -133,7 +138,9 @@ class EventPageHostFunctions extends Component {
             });
 
             window.location = '/eventlist';
-        }).catch(err => console.log(err));
+        })
+        // .catch(err => console.log(err));
+        .catch((error) => error)
     }
     
     render() {

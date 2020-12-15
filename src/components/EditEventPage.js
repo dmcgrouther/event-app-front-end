@@ -48,7 +48,7 @@ class EditEventPage extends Component {
 
     handleDatePickerSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.eventDate)
+        // console.log(this.state.eventDate)
       }
   
       handleDatePickerChange = (date) => {
@@ -72,9 +72,10 @@ class EditEventPage extends Component {
             event.preventDefault();
             axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, this.state)
             .then((res) => {
-                console.log(res)
+                // console.log(res)
             })
-            .catch((err) => console.log(err))
+            // .catch((err) => console.log(err))
+            .catch((err) => err)
         }
     }
 

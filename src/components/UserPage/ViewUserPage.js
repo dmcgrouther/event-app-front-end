@@ -22,16 +22,16 @@ class ViewUserPage extends Component {
     }
 
     handleClick(e) {
-        console.log(e)
+        // console.log(e)
         window.location = `/events/${e}`
     }
 
     getUsersEventsNamesAsAttendee () {
         this.state.usersEventsAsAttendee.forEach((usersEventAsAttendee) => {
-            console.log(usersEventAsAttendee)
+            // console.log(usersEventAsAttendee)
             axios.get(`${process.env.REACT_APP_API_URL}/events/${usersEventAsAttendee}`)
             .then(res => {
-                console.log(res)
+                // console.log(res)
 
                 let eventObject = {
                     objectEventName: res.data.data.eventName,
@@ -43,16 +43,17 @@ class ViewUserPage extends Component {
                     userEventsAsAttendeeToDisplayInfo: this.state.userEventsAsAttendeeToDisplayInfo.concat(eventObject)
                 })
             })
-            .catch((error) => console.log(error))
+            // .catch((error) => console.log(error))
+            .catch((err) => err)
         })
     }
 
     getUsersEventsNamesAsHost () {
         this.state.eventsUserIsHosting.forEach((eventUserIsHosting) => {
-            console.log(eventUserIsHosting)
+            // console.log(eventUserIsHosting)
             axios.get(`${process.env.REACT_APP_API_URL}/events/${eventUserIsHosting}`)
             .then(res => {
-                console.log(res)
+                // console.log(res)
 
                 let eventHostingObject = {
                     eventHostingObjectName: res.data.data.eventName,
@@ -64,7 +65,8 @@ class ViewUserPage extends Component {
                     userEventsAsHostToDisplayInfo: this.state.userEventsAsHostToDisplayInfo.concat(eventHostingObject)
                 })
             })
-            .catch((error) => console.log(error))
+            // .catch((error) => console.log(error))
+            .catch((err) => err)
         })
     }
 
@@ -77,11 +79,12 @@ class ViewUserPage extends Component {
                 usersEventsAsAttendee: res.data.data.usersEventsAsAttendee,
                 eventsUserIsHosting: res.data.data.eventsUserIsHosting,
             })
-            console.log(res)
+            // console.log(res)
             this.getUsersEventsNamesAsAttendee()
             this.getUsersEventsNamesAsHost()
           })
-          .catch((err) => console.log(err));
+        //   .catch((err) => console.log(err));
+          .catch((err) => err)
     }
 
     // deleteYourAccount(event){

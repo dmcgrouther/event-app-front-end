@@ -39,12 +39,12 @@ class EventPage extends Component {
     }
 
     getUsersInEventNames () {
-        console.log(`getUsersInEventNames activated.`)
+        // console.log(`getUsersInEventNames activated.`)
         this.state.nonHostUsers.forEach((nonHostUser) => {
-            console.log(nonHostUser)
+            // console.log(nonHostUser)
             axios.get(`${process.env.REACT_APP_API_URL}/users/${nonHostUser}`)
             .then(res => {
-                console.log(res)
+                // console.log(res)
 
                 let userObject = {
                     objectUserName: res.data.data.name,
@@ -55,7 +55,8 @@ class EventPage extends Component {
                     usersInEventToDisplayName: this.state.usersInEventToDisplayName.concat(userObject)
                 })
             })
-            .catch((error) => console.log(error))
+            // .catch((error) => console.log(error))
+            .catch((error) => error)
         })
     }
 
@@ -80,10 +81,11 @@ class EventPage extends Component {
                   currentNonHostPlayerCount: res.data.data.nonHostUsers.length,
                   hostUser: res.data.data.hostUser,
               })
-              console.log(res)
+            //   console.log(res)
               this.getUsersInEventNames()
             })
-            .catch((err) => console.log(err)),
+            .catch((error) => error),
+            // .catch((err) => console.log(err)),
 
             axios.get(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`)
             .then((res) => {
@@ -91,57 +93,64 @@ class EventPage extends Component {
                     usersEventsAsAttendee: res.data.data.usersEventsAsAttendee,
                     eventsUserIsHosting: res.data.data.eventsUserIsHosting,
                 })
-                console.log(res)
-                console.log(`eventsUserIsHosting is ${this.state.eventsUserIsHosting}`)
+                // console.log(res)
+                // console.log(`eventsUserIsHosting is ${this.state.eventsUserIsHosting}`)
             })
-            .catch((err) => console.log(err))
+            // .catch((err) => console.log(err))
+            .catch((error) => error)
 
         ])
     }
 
     handleJoinEventClick(){
-        console.log('clicked, yay!')
-        console.log(this.state.nonHostUsers)
-        console.log(this.props.currentUser)
+        // console.log('clicked, yay!')
+        // console.log(this.state.nonHostUsers)
+        // console.log(this.props.currentUser)
 
         axios.all([
             axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, {
                 nonHostUsers: this.state.nonHostUsers.concat([this.props.currentUser]),
                 currentNonHostPlayerCount: this.state.currentNonHostPlayerCount+1,
-            }).then((response) => {
-                console.log(response);
-            }, (error) => {
-                console.log(error)
-            }),
+            })
+            .then((response) => response)
+            .catch((error) => error)
+            // .then((response) => {
+            //     console.log(response);
+            // }, (error) => {
+            //     console.log(error)
+            // })
+            ,
 
             axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
                 usersEventsAsAttendee: this.state.usersEventsAsAttendee.concat(window.location.pathname.split('/')[2])
             })
-            .then((response) => {
-                console.log(response);
-            },(error) => {
-                console.log(error)
-            })
+            // .then((response) => {
+            //     console.log(response);
+            // },(error) => {
+            //     console.log(error)
+            // })
+            .then((response) => response)
+            .catch((error) => error)
         ])
         window.location.reload();
     }
 
     handleRemoveCurrentUserFromEventClick(){
-        console.log('hello')
+        // console.log('hello')
         let index = this.state.nonHostUsers.indexOf(this.props.currentUser);
-        console.log(`the index is ${index}`)
+        // console.log(`the index is ${index}`)
         let newStateNonHostUsers = this.state.nonHostUsers;
-        console.log(`this.state.nonHostUsers is ${this.state.nonHostUsers}`);
-        console.log(`newStateNonHostUsers is ${newStateNonHostUsers}`);
+        // console.log(`this.state.nonHostUsers is ${this.state.nonHostUsers}`);
+        // console.log(`newStateNonHostUsers is ${newStateNonHostUsers}`);
         if (index > -1) {
             newStateNonHostUsers.splice(index, 1);
         }
-        console.log(`newStateNonHostUsers is ${newStateNonHostUsers}`);
+        // console.log(`newStateNonHostUsers is ${newStateNonHostUsers}`);
 
 
         let usersEventsIndex = this.state.usersEventsAsAttendee.indexOf(window.location.pathname.split('/')[2])
         let newUsersEventsAsAttendee = this.state.usersEventsAsAttendee; 
-        console.log(`${usersEventsIndex} is usersEventsIndex`);
+        // console.log(`${usersEventsIndex} is usersEventsIndex`);
         if(index > -1){
             newUsersEventsAsAttendee.splice(usersEventsIndex, 1);
         }
@@ -150,20 +159,26 @@ class EventPage extends Component {
             axios.put(`${process.env.REACT_APP_API_URL}/events/${window.location.pathname.split('/')[2]}`, {
                 nonHostUsers: newStateNonHostUsers,
                 currentNonHostPlayerCount: this.state.currentNonHostPlayerCount-1,
-            }).then((response) => {
-                console.log(response);
-            }, (error) => {
-                console.log(error)
-            }),
+            })
+            .then((response) => response)
+            .catch((error) => error)
+            // .then((response) => {
+            //     console.log(response);
+            // }, (error) => {
+            //     console.log(error)
+            // })
+            ,
 
             axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.currentUser}`, {
                 usersEventsAsAttendee: newUsersEventsAsAttendee,
             })
-            .then((response) => {
-                console.log(response);
-            },(error) => {
-                console.log(error)
-            })
+            .then((response) => response)
+            .catch((error) => error)
+            // .then((response) => {
+            //     console.log(response);
+            // },(error) => {
+            //     console.log(error)
+            // })
         ])
         window.location.reload();
     }

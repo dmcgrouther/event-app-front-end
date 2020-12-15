@@ -35,11 +35,12 @@ class Register extends Component {
       event.preventDefault();
       axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, this.state)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.props.setCurrentUser(res.data.data);
           window.location = '/eventlist';
         })
-        .catch((error) => console.log((error), this.somethingWentWrong()))
+        // .catch((error) => console.log((error), this.somethingWentWrong()))
+        .catch((error) => this.somethingWentWrong())
     }
   }
 

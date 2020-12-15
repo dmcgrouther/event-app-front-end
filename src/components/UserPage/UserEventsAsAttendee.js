@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class UserEventsAsAttendee extends Component {
 
     handleClick(e) {
-        console.log(e)
+        // console.log(e)
         window.location = `/events/${e}`
     }
 

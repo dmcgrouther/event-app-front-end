@@ -31,16 +31,20 @@ class EditUserPage extends Component {
     
     handleSubmit(event){
         event.preventDefault();
-        console.log(this.state.name);
-        console.log(this.state.contactInfo);
+        // console.log(this.state.name);
+        // console.log(this.state.contactInfo);
         axios.put(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`, {
             name: this.state.name,
             contactInfo: this.state.contactInfo
-        }).then((response) => {
-            console.log(response);
-        }, (error) => {
-            console.log(error)
-        });
+        })
+        // .then((response) => {
+        //     console.log(response);
+        // }, (error) => {
+        //     console.log(error)
+        // })
+        .then((response) => response)
+        .catch((error) => error)
+        ;
     }
 
     render() {

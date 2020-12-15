@@ -32,12 +32,12 @@ class Login extends Component {
     event.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, this.state)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         this.props.setCurrentUser(res.data.data);
         this.props.history.push('/eventlist');
       })
       .catch((err) => {
-          console.log(err)
+          // console.log(err)
           this.wrongEmailOrPassword()
         }
       );

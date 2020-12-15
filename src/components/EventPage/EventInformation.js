@@ -44,9 +44,10 @@ class EventInformation extends Component {
                 nonHostUsers: res.data.data.nonHostUsers,
                 currentNonHostPlayerCount: res.data.data.nonHostUsers.length,
             })
-            console.log(res)
+            // console.log(res)
           })
-          .catch((err) => console.log(err));
+        //   .catch((err) => console.log(err));
+          .catch((error) => error)
     }
 
     // convertTimeToHumanReadable (time) {
