@@ -84,25 +84,16 @@ class ViewUserPage extends Component {
           .catch((err) => console.log(err));
     }
 
-    deleteYourAccount(event){
-        // event.preventDefault();
-
-        //delete account.
-        //for each eventUserIsHosting in eventsUserIsHosting
-        //axios get request on eventUserIsHosting
-        //get info on the attendees
-        //get request on each attendee 
-        //edit user info to not have the eventUserIsHosting
-        //axios delete request on eventUserIsHosting
-
-        console.log('delete delete!')
-        axios.delete(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
-        .then(res => {
-            console.log(res);
-            // this.props.setCurrentUser('');
-            // window.location = '/accountdeleted';
-        }).catch(err => console.log(err));
-    }
+    // deleteYourAccount(event){
+    //     // window.location = '/accountdeleted';
+    //     console.log('delete delete!')
+    //     axios.delete(`${process.env.REACT_APP_API_URL}/users/${window.location.pathname.split('/')[2]}`)
+    //     .then(res => {
+    //         console.log(res);
+    //         // this.props.setCurrentUser('');
+    //         // window.location = '/accountdeleted';
+    //     }).catch(err => console.log(err));
+    // }
 
     render () {
         if(this.props.currentUser === window.location.pathname.split('/')[2]){
@@ -114,29 +105,16 @@ class ViewUserPage extends Component {
                     <p>If you would like to edit your username and contact information, you may do so <Link to={`/edituser/${window.location.pathname.split('/')[2]}`}>here</Link>.</p>
                     <br />
                     <div>
-                        {/* <h2>Here are your upcoming events as an attendee.</h2>
-                        <ul>
-                            {this.state.userEventsAsAttendeeToDisplayInfo.map((userEventAsAttendeeToDisplayInfo, i) => (
-                                // <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} {userEventAsAttendeeToDisplayInfo.objectEventDate}</li>
-                                <li key={i} onClick={ () => this.handleClick(userEventAsAttendeeToDisplayInfo.objectId) }>{userEventAsAttendeeToDisplayInfo.objectEventName} {`${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toLocaleString()} ${new Date(userEventAsAttendeeToDisplayInfo.objectEventDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
-                            ))}
-                        </ul> */}
                         <UsersEventsAsAttendee userEventsAsAttendeeToDisplayInfo={this.state.userEventsAsAttendeeToDisplayInfo} />
-                        {/* <h2>Here are your upcoming events as a host.</h2>
-                        <ul>
-                            {this.state.userEventsAsHostToDisplayInfo.map((userEventAsHostToDisplayInfo, i) => (
-                                <li key={i} onClick={ () => this.handleClick(userEventAsHostToDisplayInfo.eventHostingObjectId) }>{userEventAsHostToDisplayInfo.eventHostingObjectName} {`${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toLocaleString()} ${new Date(userEventAsHostToDisplayInfo.eventHostingObjectDate).toTimeString().split(' ').slice(2).join(" ")}`}</li>
-                            ))}
-                        </ul> */}
                         <br />
                         <UserEventsAsHost userEventsAsHostToDisplayInfo={this.state.userEventsAsHostToDisplayInfo} />
                     </div>
                     <br />
                     <br />
-                    <p>If you would like to delete your account, you can do so by clicking the button below.</p>
+                    {/* <p>If you would like to delete your account, you can do so by clicking the button below.</p>
                     <button  onClick={(event) => { if (window.confirm('Are you sure you want to delete your account?')) this.deleteYourAccount(event) } }>
                         Delete My Account
-                    </button>
+                    </button> */}
                 </div>
                 </>
               );
