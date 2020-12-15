@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './EditUserPage.css'
+//https://stackoverflow.com/questions/47012169/a-component-is-changing-an-uncontrolled-input-of-type-text-to-be-controlled-erro/47012342
+//followed the above for input field value of contact info.
 
 class EditUserPage extends Component {
     constructor(props){
@@ -65,7 +67,7 @@ class EditUserPage extends Component {
                             <label>
                                 Contact Info:
                                 <br />
-                                <input onChange={this.handleChange} id="contactInfo" name="contactInfo" type="text" value={this.state.contactInfo} maxLength="80" />
+                                <input onChange={this.handleChange} id="contactInfo" name="contactInfo" type="text" value={this.state.contactInfo || ''} maxLength="80" />
                             </label>
                         </div>
                         <br />
