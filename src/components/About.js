@@ -6,7 +6,7 @@ const About = () => {
         <div>
             <div className="about__section">
             <h2 className="about__header">
-                What is evently?
+                What is Event Finder?
             </h2>
                 <p className="about__sentence">
                 This app is made so that tabletop gamers can find new events and host new ones.  If you want to discover

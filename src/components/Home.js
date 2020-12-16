@@ -7,7 +7,7 @@ const Home = () => {
         <div>
             <div className="home-page__header-section">
                 <h1>
-                    Welcome to Evently!
+                    Welcome to Event Finder!
                 </h1>
                 <p>A website to schedule and find your favorite virtual tabletop gaming sessions.</p>
             </div>
