@@ -33,8 +33,8 @@ const About = () => {
                 </p>
             </div>
             <div className="about__section">
-                <h2 className="about__header">Currently this app is in early stages of development</h2>
-                <p className="about__sentence">To contact the admin for this site, you can do send an email to dbmcgrouther@gmail.com or contact on discord Skynet #9572. Feel free to ask questions or send feedback.</p>
+                <h2 className="about__header">Currently this site is in early stages of development</h2>
+                <p className="about__sentence">To contact the admin for this site, you can do send an email to dbmcgrouther@gmail.com or contact on discord Skynet #9572. Feel free to ask questions or send feedback. In the event of an issue, please send me that as well so I can make improvements.</p>
             </div>
         </div>
     )
